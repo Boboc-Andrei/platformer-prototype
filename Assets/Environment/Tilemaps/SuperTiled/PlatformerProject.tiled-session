@@ -1,0 +1,127 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "AutomapRules.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "8x8_grassy_dirt.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 4,
+            "scaleInEditor": 8
+        },
+        "8x8_simple_platform.tsx": {
+            "scaleInDock": 5.5,
+            "scaleInEditor": 8
+        },
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "AutomapRules.tmx": {
+            "scale": 4,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 111.375,
+                "y": 81.875
+            }
+        },
+        "AutomapRules.tmx#AutoMap Rules": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "Level1.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 234.75,
+                "y": 153.75
+            }
+        },
+        "Level1.tmx#AutoMap Rules": {
+            "scaleInDock": 1
+        },
+        "Level2.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 86,
+                "y": 394
+            }
+        },
+        "Level3.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 310.66666666666663,
+                "y": 119.33333333333331
+            }
+        },
+        "Level4.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160,
+                "y": 239.33333333333331
+            }
+        },
+        "automap-tiles.tmx": {
+            "scale": 4.259166666666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 120.79827822343965,
+                "y": 73.8407356681667
+            }
+        },
+        "automap-tiles.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 4
+        }
+    },
+    "last.externalTilesetPath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
+    "last.imagePath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
+    "last.worldFilePath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
+    "loadedWorlds": [
+        "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled/Planet1.world"
+    ],
+    "map.height": 30,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 40,
+    "openFiles": [
+        "Level1.tmx",
+        "AutomapRules.tmx",
+        "Level2.tmx",
+        "Level3.tmx",
+        "Level4.tmx",
+        "8x8_grassy_dirt.tsx",
+        "8x8_simple_platform.tsx"
+    ],
+    "project": "PlatformerProject.tiled-project",
+    "recentFiles": [
+        "Level1.tmx",
+        "8x8_simple_platform.tsx",
+        "8x8_grassy_dirt.tsx",
+        "Level4.tmx",
+        "Level3.tmx",
+        "Level2.tmx",
+        "AutomapRules.tmx",
+        ":/automap-tiles.tsx",
+        "automap-tiles.tsx",
+        "automap-tiles.tmx"
+    ],
+    "resizeMap.removeObjects": true,
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    }
+}
