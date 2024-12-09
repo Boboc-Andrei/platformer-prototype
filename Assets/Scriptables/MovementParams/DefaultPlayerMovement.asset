@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalTopSpeed: 9
   HorizontalAcceleration: 0.75
-  JumpSpeed: 20
-  JumpCutoffFactor: 0.4
+  JumpSpeed: 21
+  JumpCutoffFactor: 0.6
   CoyoteTime: 0.15
   RisingGravity: 4
   FallingGravity: 6

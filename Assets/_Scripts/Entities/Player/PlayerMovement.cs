@@ -87,7 +87,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
             }
         }
         else {
-            if (IsMovingAgainstWall() && body.linearVelocityY <= 0) {
+            if (IsGrabbingWall() && body.linearVelocityY <= 0) {
                 machine.Set(wallSlideState);
             }
             else {
@@ -99,6 +99,10 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     private bool IsMovingAgainstWall() {
         int wallDirection = !IsTouchingWall ? 0 : IsTouchingLeftWall ? -1 : 1;
         return input.HorizontalMovementInput != 0 && Mathf.Sign(input.HorizontalMovementInput) == wallDirection;
+    }
+
+    private bool IsGrabbingWall() {
+        return IsTouchingWall && input.GrabPressed;
     }
 
     #region Jump Methods
