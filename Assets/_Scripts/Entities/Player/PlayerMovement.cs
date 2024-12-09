@@ -5,27 +5,20 @@ using UnityEngine;
 
 public class PlayerMovement : CharacterCore, IPersistentData {
 
-    [Header("Components")]
-    public LayerMask groundMask;
+    [Header("Player movement")]
     public InputManager input;
-
-
-    [Header("Sensorial data")]
     public bool JumpEndedEarly;
-
+    public float JumpBufferTime;
+    public float jumpBufferCounter;
+    public bool queueJump;
+    public bool IsJumping;
+    public bool IsHorizontalMovementDisabled;
 
     [Header("States")]
     [SerializeField] private IdleState idleState;
     [SerializeField] private WalkState walkState;
     [SerializeField] private AirborneState airborneState;
     [SerializeField] private WallSlideState wallSlideState;
-
-    [Header("Player movement")]
-    public float JumpBufferTime;
-    public float jumpBufferCounter;
-    public bool queueJump;
-    public bool IsJumping;
-    public bool IsWallJumping;
 
     private Vector3 startingPosition;
     private Vector3 startingVelocity = Vector3.zero;
@@ -46,8 +39,9 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         DontDestroyOnLoad(gameObject);
         startingPosition = transform.position;
     }
+
     private void Start() {
-        SetupInstances();
+        SetupStates();
         machine.Set(idleState);
 
     }
@@ -69,7 +63,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     public void HandleHorizontalMovement() {
         if (IsCrowdControlled) return;
-        HorizontalHeading = IsWallJumping ? Mathf.Sign(body.linearVelocityX) : input.HorizontalMovementInput;
+        HorizontalHeading = IsHorizontalMovementDisabled ? Mathf.Sign(body.linearVelocityX) : input.HorizontalMovementInput;
         body.linearVelocityX += movementParams.HorizontalAcceleration * HorizontalHeading;
     }
 
@@ -136,15 +130,15 @@ public class PlayerMovement : CharacterCore, IPersistentData {
                 WallJump();
             }
         }
-
-
     }
+
     private void Jump() {
         IsJumping = true;
         queueJump = false;
         JumpEndedEarly = false;
         body.linearVelocityY = movementParams.JumpSpeed;
     }
+
     private void EndJumpEarly() {
         JumpEndedEarly = true;
         body.linearVelocityY *= movementParams.JumpCutoffFactor;
@@ -169,14 +163,17 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         StartCoroutine(DisableMovementForSeconds(0.3f));
         Jump();
     }
+
     private IEnumerator DisableMovementForSeconds(float time) {
-        IsWallJumping = true;
+        IsHorizontalMovementDisabled = true;
         yield return new WaitForSeconds(time);
-        IsWallJumping = false;
+        IsHorizontalMovementDisabled = false;
     }
 
     #endregion
 
+
+    #region Data Persistence
     public void LoadPersistentData(GameData data) {
         body.position = data.playerPosition;
         body.linearVelocity = data.playerVelocity;
@@ -191,4 +188,5 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         data.playerPosition = startingPosition;
         data.playerVelocity = startingVelocity;
     }
+    #endregion
 }

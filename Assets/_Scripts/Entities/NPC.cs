@@ -6,7 +6,7 @@ public class NPC : CharacterCore {
     public PatrolState patrolState;
 
     private void Start() {
-        SetupInstances();
+        SetupStates();
         machine.Set(patrolState);
     }
 
