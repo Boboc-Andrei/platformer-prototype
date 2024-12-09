@@ -24,8 +24,8 @@ public class InputManager : MonoBehaviour
     void Update() {
         Vector2 movementInput = moveAction.ReadValue<Vector2>();
 
-        HorizontalMovementInput = movementInput.x;
-        VerticalMovementInput = movementInput.y;
+        //HorizontalMovementInput = movementInput.x;
+        //VerticalMovementInput = movementInput.y;
     }
 
     private void OnJumpActionStarted(InputAction.CallbackContext obj) {

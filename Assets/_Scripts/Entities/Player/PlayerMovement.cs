@@ -98,7 +98,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     private bool IsMovingAgainstWall() {
         int wallDirection = !IsTouchingWall ? 0 : IsTouchingLeftWall ? -1 : 1;
-        return input.HorizontalMovementInput != 0 && input.HorizontalMovementInput == wallDirection;
+        return input.HorizontalMovementInput != 0 && Mathf.Sign(input.HorizontalMovementInput) == wallDirection;
     }
 
     #region Jump Methods
