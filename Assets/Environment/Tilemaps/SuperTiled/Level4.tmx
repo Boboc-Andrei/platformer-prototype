@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="60" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="60" tilewidth="8" tileheight="8" infinite="0" nextlayerid="4" nextobjectid="16">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <layer id="1" name="Level" width="40" height="60" visible="0" opacity="0.35">
   <data encoding="csv">
@@ -129,4 +129,66 @@
 10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 </data>
  </layer>
+ <objectgroup id="3" name="Ledges">
+  <object id="1" template="test_object.tx" x="209" y="37" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="2"/>
+    <property name="startPosition" type="object" value="3"/>
+   </properties>
+  </object>
+  <object id="2" x="214" y="33">
+   <point/>
+  </object>
+  <object id="3" x="207" y="42">
+   <point/>
+  </object>
+  <object id="4" template="test_object.tx" x="113" y="429" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="5"/>
+    <property name="startPosition" type="object" value="6"/>
+   </properties>
+  </object>
+  <object id="5" x="118" y="425">
+   <point/>
+  </object>
+  <object id="6" x="111" y="434">
+   <point/>
+  </object>
+  <object id="7" template="test_object.tx" x="264" y="37" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="8"/>
+    <property name="startPosition" type="object" value="9"/>
+   </properties>
+  </object>
+  <object id="8" x="266" y="33">
+   <point/>
+  </object>
+  <object id="9" x="273" y="42">
+   <point/>
+  </object>
+  <object id="10" template="test_object.tx" x="48" y="165" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="11"/>
+    <property name="startPosition" type="object" value="12"/>
+   </properties>
+  </object>
+  <object id="11" x="50" y="161">
+   <point/>
+  </object>
+  <object id="12" x="57" y="170">
+   <point/>
+  </object>
+  <object id="13" template="test_object.tx" x="168" y="429" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="14"/>
+    <property name="startPosition" type="object" value="15"/>
+   </properties>
+  </object>
+  <object id="14" x="170" y="425">
+   <point/>
+  </object>
+  <object id="15" x="177" y="434">
+   <point/>
+  </object>
+ </objectgroup>
 </map>

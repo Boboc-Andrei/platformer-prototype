@@ -242,7 +242,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.5625, y: -0.125}
+  m_Offset: {x: -0.5625, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -252,7 +252,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.125, y: 1.25}
+  m_Size: {x: 0.125, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7759825874997172280
 MonoBehaviour:
@@ -339,7 +339,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.4375, y: -0.125}
+  m_Offset: {x: 0.4375, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -349,7 +349,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.125, y: 1.25}
+  m_Size: {x: 0.125, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &4410890167452217328
 MonoBehaviour:
@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 6330670658156457724}
   - component: {fileID: 1779870486505826326}
   m_Layer: 6
-  m_Name: Player
+  m_Name: Player Silhouette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,26 +854,23 @@ MonoBehaviour:
   groundCheck: {fileID: 1698558524249416225}
   leftWallCheck: {fileID: 7759825874997172280}
   rightWallCheck: {fileID: 4410890167452217328}
-  Gravity: 0
   HorizontalDrag: 0
   HorizontalHeading: 0
   IsCrowdControlled: 0
   ApplyWalkingSpeedLimit: 1
   FacingRight: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
+  GravityOverride: 0
   input: {fileID: 6330670658156457724}
   JumpEndedEarly: 0
-  idleState: {fileID: 2369973504862786110}
-  walkState: {fileID: 4015471873744707883}
-  airborneState: {fileID: 267223775083067501}
-  wallSlideState: {fileID: 5413277764114547750}
   JumpBufferTime: 0.2
   jumpBufferCounter: 0
   queueJump: 0
   IsJumping: 0
-  IsWallJumping: 0
+  IsHorizontalMovementDisabled: 0
+  idleState: {fileID: 2369973504862786110}
+  walkState: {fileID: 4015471873744707883}
+  airborneState: {fileID: 267223775083067501}
+  wallSlideState: {fileID: 5413277764114547750}
 --- !u!114 &6330670658156457724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,6 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalMovementInput: 0
   VerticalMovementInput: 0
+  GrabPressed: 0
 --- !u!114 &1779870486505826326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_Actions: {fileID: 0}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:

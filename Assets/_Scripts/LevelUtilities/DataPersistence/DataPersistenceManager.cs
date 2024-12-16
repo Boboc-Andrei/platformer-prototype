@@ -34,12 +34,6 @@ public class DataPersistenceManager : MonoBehaviour {
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        this.persistentDataObjects = FindAllPersistentDataObjects();
-        SetDefaultData();
-        LoadGame();        
-    }
-
     private void Start() {
     }
 
@@ -48,6 +42,11 @@ public class DataPersistenceManager : MonoBehaviour {
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        persistentDataObjects = FindAllPersistentDataObjects();
+        SetDefaultData();
+        LoadGame();
+    }
 
     public void OnSceneUnloaded(Scene scene) {
         SaveGame();
@@ -83,7 +82,7 @@ public class DataPersistenceManager : MonoBehaviour {
     }
 
     public void ClearSave() {
-            dataFileHandler.Clear();
+        dataFileHandler.Clear();
     }
 
     public void SetDefaultData() {

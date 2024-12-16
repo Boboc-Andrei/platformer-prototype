@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="8" tileheight="8" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="8" tileheight="8" infinite="0" nextlayerid="5" nextobjectid="7">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <tileset firstgid="49" source="8x8_simple_platform.tsx"/>
  <layer id="1" name="Level" width="40" height="30" visible="0" opacity="0.37">
@@ -104,4 +104,30 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="4" name="Ledges">
+  <object id="1" template="test_object.tx" x="137" y="93" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="2"/>
+    <property name="startPosition" type="object" value="3"/>
+   </properties>
+  </object>
+  <object id="2" x="142" y="89">
+   <point/>
+  </object>
+  <object id="3" x="135" y="98">
+   <point/>
+  </object>
+  <object id="4" template="test_object.tx" x="152" y="93" width="7" height="3">
+   <properties>
+    <property name="endPosition" type="object" value="5"/>
+    <property name="startPosition" type="object" value="6"/>
+   </properties>
+  </object>
+  <object id="5" x="154" y="89">
+   <point/>
+  </object>
+  <object id="6" x="161" y="98">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
