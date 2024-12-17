@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "AutomapRules.tmx",
+    "activeFile": "Level2.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -17,6 +17,7 @@
             "scaleInEditor": 8
         },
         "8x8_placeholder13_full.tsx": {
+            "scaleInDock": 8,
             "scaleInEditor": 23
         },
         "8x8_simple_platform.tsx": {
@@ -24,7 +25,7 @@
             "scaleInEditor": 8
         },
         "8x8_simple_platform_upper.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 11,
             "scaleInEditor": 23
         },
         ":/automap-tiles.tsx": {
@@ -38,8 +39,8 @@
             "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 53.09090909090908,
-                "y": 56.36363636363637
+                "x": 120,
+                "y": 80.00000000000001
             }
         },
         "AutomapRules.tmx#AutoMap Rules": {
@@ -50,35 +51,35 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 256,
-                "y": 129
+                "x": 240,
+                "y": 160
             }
         },
         "Level1.tmx#AutoMap Rules": {
             "scaleInDock": 1
         },
         "Level2.tmx": {
-            "scale": 0.5,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 46,
-                "y": 264
+                "x": 160,
+                "y": 120
             }
         },
         "Level3.tmx": {
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 130.5,
-                "y": 139.5
+                "x": 240,
+                "y": 120
             }
         },
         "Level4.tmx": {
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 220,
-                "y": 204.5
+                "x": 160,
+                "y": 240
             }
         },
         "automap-tiles.tmx": {
@@ -107,26 +108,26 @@
     "map.tileWidth": 8,
     "map.width": 40,
     "openFiles": [
-        "Level1.tmx",
         "AutomapRules.tmx",
+        "Level1.tmx",
         "Level2.tmx",
         "Level3.tmx",
         "Level4.tmx",
-        "8x8_grassy_dirt.tsx",
-        "8x8_simple_platform.tsx"
+        "8x8_simple_platform_upper.tsx",
+        "8x8_placeholder13_full.tsx"
     ],
     "project": "PlatformerProject.tiled-project",
     "property.type": "object",
     "recentFiles": [
-        "8x8_placeholder13_full.tsx",
-        "8x8_simple_platform.tsx",
-        "8x8_grassy_dirt.tsx",
-        "8x8_simple_platform_upper.tsx",
+        "AutomapRules.tmx",
         "Level1.tmx",
+        "8x8_placeholder13_full.tsx",
+        "8x8_simple_platform_upper.tsx",
         "Level4.tmx",
         "Level3.tmx",
         "Level2.tmx",
-        "AutomapRules.tmx",
+        "8x8_simple_platform.tsx",
+        "8x8_grassy_dirt.tsx",
         ":/automap-tiles.tsx",
         "automap-tiles.tsx",
         "automap-tiles.tmx"
