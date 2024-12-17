@@ -16,9 +16,16 @@
             "scaleInDock": 4,
             "scaleInEditor": 8
         },
+        "8x8_placeholder13_full.tsx": {
+            "scaleInEditor": 23
+        },
         "8x8_simple_platform.tsx": {
             "scaleInDock": 5.5,
             "scaleInEditor": 8
+        },
+        "8x8_simple_platform_upper.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 23
         },
         ":/automap-tiles.tsx": {
             "scaleInDock": 1,
@@ -31,8 +38,8 @@
             "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 80,
-                "y": 65.99999999999999
+                "x": 53.09090909090908,
+                "y": 56.36363636363637
             }
         },
         "AutomapRules.tmx#AutoMap Rules": {
@@ -40,41 +47,38 @@
             "scaleInEditor": 8
         },
         "Level1.tmx": {
-            "expandedObjectLayers": [
-                3
-            ],
-            "scale": 4,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 217.5,
-                "y": 138.75
+                "x": 256,
+                "y": 129
             }
         },
         "Level1.tmx#AutoMap Rules": {
             "scaleInDock": 1
         },
         "Level2.tmx": {
-            "scale": 4,
-            "selectedLayer": 1,
+            "scale": 0.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 180.75,
-                "y": 170.25
+                "x": 46,
+                "y": 264
             }
         },
         "Level3.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 206.66666666666666,
-                "y": 243.99999999999997
+                "x": 130.5,
+                "y": 139.5
             }
         },
         "Level4.tmx": {
-            "scale": 2,
-            "selectedLayer": 1,
+            "scale": 4,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -211.5,
-                "y": 224
+                "x": 220,
+                "y": 204.5
             }
         },
         "automap-tiles.tmx": {
@@ -114,9 +118,11 @@
     "project": "PlatformerProject.tiled-project",
     "property.type": "object",
     "recentFiles": [
-        "Level1.tmx",
+        "8x8_placeholder13_full.tsx",
         "8x8_simple_platform.tsx",
         "8x8_grassy_dirt.tsx",
+        "8x8_simple_platform_upper.tsx",
+        "Level1.tmx",
         "Level4.tmx",
         "Level3.tmx",
         "Level2.tmx",
