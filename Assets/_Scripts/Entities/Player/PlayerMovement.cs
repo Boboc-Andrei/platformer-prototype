@@ -19,6 +19,11 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     [SerializeField] private WalkState walkState;
     [SerializeField] private AirborneState airborneState;
     [SerializeField] private WallSlideState wallSlideState;
+    [SerializeField] private LedgeGrabState ledgeGrabState;
+
+    [Header("Ledge sensors")]
+    [SerializeField] private TerrainSensor leftLedgeSensor;
+    [SerializeField] private TerrainSensor rightLedgeSensor;
 
     private Vector3 startingPosition;
     private Vector3 startingVelocity = Vector3.zero;
@@ -49,7 +54,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     void Update() {
         HandleJumpInput();
         UpdateJumpFlags();
-
+        print($"{leftLedgeSensor.IsTouching}, {rightLedgeSensor.IsTouching}");
         SelectState();
         machine.CurrentState.Do();
     }
@@ -57,7 +62,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     void FixedUpdate() {
         HandleHorizontalMovement();
         HandleGravityScale();
-        machine.CurrentState.FixedDo();
+        machine.CurrentState.FixedDo(); 
         HandleCoreMovement();
     }
 
@@ -87,7 +92,10 @@ public class PlayerMovement : CharacterCore, IPersistentData {
             }
         }
         else {
-            if (IsGrabbingWall() && body.linearVelocityY <= 0) {
+            if(IsGrabbingLedge()) {
+                machine.Set(ledgeGrabState);
+            }
+            else if (IsGrabbingWall() && body.linearVelocityY <= 0) {
                 machine.Set(wallSlideState);
             }
             else {
@@ -96,14 +104,6 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         }
     }
 
-    private bool IsMovingAgainstWall() {
-        int wallDirection = !IsTouchingWall ? 0 : IsTouchingLeftWall ? -1 : 1;
-        return input.HorizontalMovementInput != 0 && Mathf.Sign(input.HorizontalMovementInput) == wallDirection;
-    }
-
-    private bool IsGrabbingWall() {
-        return IsTouchingWall && input.GrabPressed;
-    }
 
     #region Jump Methods
     private void OnJumpPressed() {
@@ -176,6 +176,17 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     #endregion
 
+    #region Wall Hang Methods
+    private bool IsGrabbingWall() {
+        return IsTouchingWall && input.GrabPressed;
+    }
+
+    private bool IsGrabbingLedge() {
+        return (leftLedgeSensor.IsTouching || rightLedgeSensor.IsTouching) && input.GrabPressed;
+    }
+
+
+    #endregion
 
     #region Data Persistence
     public void LoadPersistentData(GameData data) {

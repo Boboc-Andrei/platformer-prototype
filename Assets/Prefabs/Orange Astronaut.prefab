@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1226392021595993554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8777637684642823976}
+  - component: {fileID: 8148954638843530517}
+  m_Layer: 0
+  m_Name: LedgeGrabState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8777637684642823976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226392021595993554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8730711961027495995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8148954638843530517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226392021595993554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b66f3283305ed74d9afcf6bb29c759e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: -5011058855559727678, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
 --- !u!1 &1271628363176316086
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +231,7 @@ GameObject:
   - component: {fileID: 6581908486101686470}
   - component: {fileID: 1983305868438588638}
   - component: {fileID: 1124804340275121355}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +283,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -316,7 +361,7 @@ GameObject:
   - component: {fileID: 672256771679057016}
   - component: {fileID: 9100976484708746508}
   - component: {fileID: 4189276764590382529}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +413,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1010,7 +1055,7 @@ GameObject:
   - component: {fileID: 1779870486505826326}
   m_Layer: 6
   m_Name: Orange Astronaut
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,6 +1078,7 @@ Transform:
   - {fileID: 5235833161874370380}
   - {fileID: 8481274094886311742}
   - {fileID: 8823487361822182544}
+  - {fileID: 8777637684642823976}
   - {fileID: 1009878781041035828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1099,6 +1145,9 @@ MonoBehaviour:
   walkState: {fileID: 4015471873744707883}
   airborneState: {fileID: 267223775083067501}
   wallSlideState: {fileID: 5413277764114547750}
+  ledgeGrabState: {fileID: 8148954638843530517}
+  leftLedgeSensor: {fileID: 4189276764590382529}
+  rightLedgeSensor: {fileID: 1124804340275121355}
 --- !u!114 &6330670658156457724
 MonoBehaviour:
   m_ObjectHideFlags: 0
