@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<template>
- <object width="5" height="5">
-  <properties>
-   <property name="endPosition" type="object" value="0"/>
-   <property name="startPosition" type="object" value="0"/>
-  </properties>
- </object>
-</template>

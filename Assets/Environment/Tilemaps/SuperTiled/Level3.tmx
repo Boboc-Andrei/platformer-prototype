@@ -4,6 +4,9 @@
  <tileset firstgid="49" source="8x8_placeholder13_full.tsx"/>
  <tileset firstgid="64" source="8x8_simple_platform_upper.tsx"/>
  <layer id="1" name="Level" width="60" height="30" opacity="0.4">
+  <properties>
+   <property name="unity:ignore" value="True"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

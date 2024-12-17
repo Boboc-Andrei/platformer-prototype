@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="LedgeHitbox" type="LedgeGrab" width="5" height="5">
+  <properties>
+   <property name="unity:isTrigger" type="bool" value="true"/>
+  </properties>
+ </object>
+</template>

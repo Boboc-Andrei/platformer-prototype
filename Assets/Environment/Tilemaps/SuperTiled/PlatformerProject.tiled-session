@@ -36,11 +36,11 @@
             "expandedObjectLayers": [
                 7
             ],
-            "scale": 5.5,
+            "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 120,
-                "y": 80.00000000000001
+                "x": 145.1086956521739,
+                "y": 111.32608695652173
             }
         },
         "AutomapRules.tmx#AutoMap Rules": {
@@ -48,11 +48,11 @@
             "scaleInEditor": 8
         },
         "Level1.tmx": {
-            "scale": 2,
-            "selectedLayer": 0,
+            "scale": 4,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 240,
-                "y": 160
+                "x": 248.375,
+                "y": 180.125
             }
         },
         "Level1.tmx#AutoMap Rules": {
@@ -62,24 +62,24 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 160,
-                "y": 120
+                "x": 135.16666666666666,
+                "y": 95.5
             }
         },
         "Level3.tmx": {
             "scale": 2,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 240,
-                "y": 120
+                "x": 130.25,
+                "y": 135.25
             }
         },
         "Level4.tmx": {
             "scale": 4,
-            "selectedLayer": 0,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 160,
-                "y": 240
+                "x": 244.375,
+                "y": 63.875
             }
         },
         "automap-tiles.tmx": {
@@ -98,6 +98,7 @@
     "last.externalTilesetPath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
     "last.imagePath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
     "last.objectTemplatePath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
+    "last.objectTypesPath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled/propertytypes.xml",
     "last.worldFilePath": "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled",
     "loadedWorlds": [
         "D:/Documents/Projects/Game Dev/Unity Projects/Level Warp Prototype/Assets/Environment/Tilemaps/SuperTiled/Planet1.world"
@@ -117,7 +118,7 @@
         "8x8_placeholder13_full.tsx"
     ],
     "project": "PlatformerProject.tiled-project",
-    "property.type": "object",
+    "property.type": "bool",
     "recentFiles": [
         "AutomapRules.tmx",
         "Level1.tmx",

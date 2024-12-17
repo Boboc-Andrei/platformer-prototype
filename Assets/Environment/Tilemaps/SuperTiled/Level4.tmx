@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="60" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="112">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="60" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="122">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <tileset firstgid="49" source="8x8_placeholder13_full.tsx"/>
  <layer id="1" name="Level" width="40" height="60" opacity="0.35">
+  <properties>
+   <property name="unity:ignore" value="True"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,57,57,57,57,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,57,57,57,57,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -130,186 +133,11 @@
 57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57
 </data>
  </layer>
- <objectgroup id="4" name="Ledges">
-  <object id="32" x="211" y="28">
-   <point/>
-  </object>
-  <object id="33" x="204" y="37">
-   <point/>
-  </object>
-  <object id="35" x="115" y="420">
-   <point/>
-  </object>
-  <object id="36" x="108" y="429">
-   <point/>
-  </object>
-  <object id="38" x="269" y="28">
-   <point/>
-  </object>
-  <object id="39" x="276" y="37">
-   <point/>
-  </object>
-  <object id="41" x="53" y="156">
-   <point/>
-  </object>
-  <object id="42" x="60" y="165">
-   <point/>
-  </object>
-  <object id="44" x="173" y="420">
-   <point/>
-  </object>
-  <object id="45" x="180" y="429">
-   <point/>
-  </object>
-  <object id="53" x="211" y="28">
-   <point/>
-  </object>
-  <object id="54" x="204" y="37">
-   <point/>
-  </object>
-  <object id="56" x="115" y="420">
-   <point/>
-  </object>
-  <object id="57" x="108" y="429">
-   <point/>
-  </object>
-  <object id="59" x="269" y="28">
-   <point/>
-  </object>
-  <object id="60" x="276" y="37">
-   <point/>
-  </object>
-  <object id="62" x="53" y="156">
-   <point/>
-  </object>
-  <object id="63" x="60" y="165">
-   <point/>
-  </object>
-  <object id="65" x="173" y="420">
-   <point/>
-  </object>
-  <object id="66" x="180" y="429">
-   <point/>
-  </object>
-  <object id="68" x="211" y="28">
-   <point/>
-  </object>
-  <object id="69" x="204" y="37">
-   <point/>
-  </object>
-  <object id="71" x="115" y="420">
-   <point/>
-  </object>
-  <object id="72" x="108" y="429">
-   <point/>
-  </object>
-  <object id="74" x="269" y="28">
-   <point/>
-  </object>
-  <object id="75" x="276" y="37">
-   <point/>
-  </object>
-  <object id="77" x="53" y="156">
-   <point/>
-  </object>
-  <object id="78" x="60" y="165">
-   <point/>
-  </object>
-  <object id="80" x="173" y="420">
-   <point/>
-  </object>
-  <object id="81" x="180" y="429">
-   <point/>
-  </object>
-  <object id="83" x="211" y="28">
-   <point/>
-  </object>
-  <object id="84" x="204" y="37">
-   <point/>
-  </object>
-  <object id="86" x="115" y="420">
-   <point/>
-  </object>
-  <object id="87" x="108" y="429">
-   <point/>
-  </object>
-  <object id="89" x="269" y="28">
-   <point/>
-  </object>
-  <object id="90" x="276" y="37">
-   <point/>
-  </object>
-  <object id="92" x="53" y="156">
-   <point/>
-  </object>
-  <object id="93" x="60" y="165">
-   <point/>
-  </object>
-  <object id="95" x="173" y="420">
-   <point/>
-  </object>
-  <object id="96" x="180" y="429">
-   <point/>
-  </object>
-  <object id="97" template="test_object.tx" x="206" y="32" width="7" height="3">
-   <properties>
-    <property name="endPosition" type="object" value="98"/>
-    <property name="startPosition" type="object" value="99"/>
-   </properties>
-  </object>
-  <object id="98" x="211" y="28">
-   <point/>
-  </object>
-  <object id="99" x="204" y="37">
-   <point/>
-  </object>
-  <object id="100" template="test_object.tx" x="110" y="424" width="7" height="3">
-   <properties>
-    <property name="endPosition" type="object" value="101"/>
-    <property name="startPosition" type="object" value="102"/>
-   </properties>
-  </object>
-  <object id="101" x="115" y="420">
-   <point/>
-  </object>
-  <object id="102" x="108" y="429">
-   <point/>
-  </object>
-  <object id="103" template="test_object.tx" x="267" y="32" width="7" height="3">
-   <properties>
-    <property name="endPosition" type="object" value="104"/>
-    <property name="startPosition" type="object" value="105"/>
-   </properties>
-  </object>
-  <object id="104" x="269" y="28">
-   <point/>
-  </object>
-  <object id="105" x="276" y="37">
-   <point/>
-  </object>
-  <object id="106" template="test_object.tx" x="51" y="160" width="7" height="3">
-   <properties>
-    <property name="endPosition" type="object" value="107"/>
-    <property name="startPosition" type="object" value="108"/>
-   </properties>
-  </object>
-  <object id="107" x="53" y="156">
-   <point/>
-  </object>
-  <object id="108" x="60" y="165">
-   <point/>
-  </object>
-  <object id="109" template="test_object.tx" x="171" y="424" width="7" height="3">
-   <properties>
-    <property name="endPosition" type="object" value="110"/>
-    <property name="startPosition" type="object" value="111"/>
-   </properties>
-  </object>
-  <object id="110" x="173" y="420">
-   <point/>
-  </object>
-  <object id="111" x="180" y="429">
-   <point/>
-  </object>
+ <objectgroup id="6" name="Ledges">
+  <object id="117" template="LedgeHitbox.tx" x="209" y="34"/>
+  <object id="118" template="LedgeHitbox.tx" x="113" y="426"/>
+  <object id="119" template="LedgeHitbox.tx" x="271" y="34"/>
+  <object id="120" template="LedgeHitbox.tx" x="55" y="162"/>
+  <object id="121" template="LedgeHitbox.tx" x="175" y="426"/>
  </objectgroup>
 </map>
