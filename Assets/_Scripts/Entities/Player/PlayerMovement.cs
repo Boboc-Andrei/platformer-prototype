@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,8 +23,6 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     [SerializeField] private LedgeGrabState ledgeGrabState;
 
     [Header("Ledge sensors")]
-    [SerializeField] private TerrainSensor leftLedgeSensor;
-    [SerializeField] private TerrainSensor rightLedgeSensor;
 
     private Vector3 startingPosition;
     private Vector3 startingVelocity = Vector3.zero;
@@ -54,7 +53,6 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     void Update() {
         HandleJumpInput();
         UpdateJumpFlags();
-        print($"{leftLedgeSensor.IsTouching}, {rightLedgeSensor.IsTouching}");
         SelectState();
         machine.CurrentState.Do();
     }
@@ -76,6 +74,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         if (GravityOverride) return;
         if (JumpEndedEarly) {
             body.gravityScale = movementParams.FallingGravity;
+            JumpEndedEarly = false;
         }
         else {
             ApplyAdaptiveGravity();
@@ -93,9 +92,10 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         }
         else {
             if(IsGrabbingLedge()) {
-                machine.Set(ledgeGrabState);
+                print("Grabbing ledge");
+                //machine.Set(ledgeGrabState);
             }
-            else if (IsGrabbingWall() && body.linearVelocityY <= 0) {
+            if (IsGrabbingWall() && body.linearVelocityY <= 0) {
                 machine.Set(wallSlideState);
             }
             else {
@@ -182,7 +182,8 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     }
 
     private bool IsGrabbingLedge() {
-        return (leftLedgeSensor.IsTouching || rightLedgeSensor.IsTouching) && input.GrabPressed;
+        print("ledge grab still not implemented");
+        return false;
     }
 
 

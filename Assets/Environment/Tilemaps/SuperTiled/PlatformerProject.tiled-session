@@ -39,8 +39,8 @@
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 145.1086956521739,
-                "y": 111.32608695652173
+                "x": 120,
+                "y": 79.97826086956522
             }
         },
         "AutomapRules.tmx#AutoMap Rules": {
@@ -48,38 +48,38 @@
             "scaleInEditor": 8
         },
         "Level1.tmx": {
-            "scale": 4,
-            "selectedLayer": -1,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 248.375,
-                "y": 180.125
+                "x": 837.5,
+                "y": 219.5
             }
         },
         "Level1.tmx#AutoMap Rules": {
             "scaleInDock": 1
         },
         "Level2.tmx": {
-            "scale": 3,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 135.16666666666666,
-                "y": 95.5
+                "x": -129.5,
+                "y": 389.5
             }
         },
         "Level3.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 130.25,
-                "y": 135.25
+                "x": 240,
+                "y": 119.75
             }
         },
         "Level4.tmx": {
             "scale": 4,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 244.375,
-                "y": 63.875
+                "x": 160,
+                "y": 240.125
             }
         },
         "automap-tiles.tmx": {

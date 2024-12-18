@@ -15,7 +15,7 @@ MonoBehaviour:
   HorizontalTopSpeed: 9
   HorizontalAcceleration: 0.75
   JumpSpeed: 21
-  JumpCutoffFactor: 0.6
+  JumpCutoffFactor: 0.5
   CoyoteTime: 0.15
   RisingGravity: 4
   FallingGravity: 6
