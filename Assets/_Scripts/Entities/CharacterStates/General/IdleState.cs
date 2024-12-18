@@ -9,13 +9,14 @@ public class IdleState : State {
     private float timeElapsed;
     private bool isPlayingSecondaryAnimation;
     public override void Enter() {
-        animator.Play(animation.name);
+        character.animator.Play(animation.name);
 
     }
     public override void Do() {
-        if (!core.IsGrounded || Mathf.Abs(body.linearVelocityX) > 0.1) {
+        if (!character.IsGrounded || Mathf.Abs(character.rigidBody.linearVelocityX) > 0.1) {
             IsStateComplete = true;
         }
+
         timeElapsed += Time.deltaTime;
         if (secondaryAnimations.Count > 0 && timeElapsed > secondaryAnimationFrequency) {
             if (!isPlayingSecondaryAnimation) {
@@ -30,14 +31,14 @@ public class IdleState : State {
     private void PlayRandomAnimation() {
         AnimationClip clip = ChooseRandomAnimation();
         if (clip != null) {
-            animator.Play(clip.name);
+            character.animator.Play(clip.name);
             isPlayingSecondaryAnimation = true;
         }
     }
 
     private void PlayDefaultAnimation() {
         isPlayingSecondaryAnimation = false;
-        animator.Play(animation.name);
+        character.animator.Play(animation.name);
         timeElapsed = 0;
     }
 
@@ -46,7 +47,7 @@ public class IdleState : State {
     }
 
     private bool IsAnimationCompleted() {
-        return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+        return character.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
     }
 
     public override void FixedDo() {

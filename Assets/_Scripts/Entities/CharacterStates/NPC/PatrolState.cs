@@ -11,7 +11,7 @@ public class PatrolState : State {
 
     protected void GoToNextDestination() {
         float randomSpot = Random.Range(point1.position.x, point2.position.x);
-        navigate.destination = new Vector2(randomSpot, core.transform.position.y);
+        navigate.destination = new Vector2(randomSpot, character.transform.position.y);
         SetSubstate(navigate, true);
     }
 

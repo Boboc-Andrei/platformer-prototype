@@ -6,14 +6,11 @@ public abstract class State : MonoBehaviour {
     protected float StartTime;
     public float RunningTime => Time.time - StartTime;
 
-    protected CharacterCore core;
-    protected Rigidbody2D body => core.body;
-    protected Animator animator => core.animator;
-    protected CharacterMovementParameters movement => core.movementParams;
+    protected CharacterCore character;
 
     public StateMachine machine = new StateMachine();
     public StateMachine parent;
-    public State state => machine.CurrentState;
+    public State currentSubstate => machine.CurrentState;
 
     protected void SetSubstate(State newState, bool forceReset = false) {
         machine.Set(newState, forceReset);
@@ -26,20 +23,20 @@ public abstract class State : MonoBehaviour {
     }
 
     public void SetCore(CharacterCore _core) {
-        core = _core;
+        character = _core;
     }
     public virtual void Enter() { }
 
+    public virtual void Do() { }
     public virtual void DoBranch() {
         Do();
-        state?.DoBranch();
+        currentSubstate?.DoBranch();
     }
 
-    public virtual void Do() { }
     public virtual void FixedDo() { }
     public virtual void FixedDoBranch() {
         FixedDo();
-        state?.FixedDoBranch();
+        currentSubstate?.FixedDoBranch();
     }
     public virtual void Exit() { }
 }

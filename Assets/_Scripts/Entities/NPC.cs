@@ -7,7 +7,7 @@ public class NPC : CharacterCore {
 
     private void Start() {
         SetupStates();
-        machine.Set(patrolState);
+        stateMachine.Set(patrolState);
     }
 
     private void Update() {

@@ -5,15 +5,15 @@ public class WalkState : State {
     new public AnimationClip animation;
 
     public override void Enter() {
-        core.HorizontalDrag = movement.GroundHorizontalDrag;
-        animator.Play(animation.name);
+        character.HorizontalDrag = character.movementParams.GroundHorizontalDrag;
+        character.animator.Play(animation.name);
     }
     public override void Do() {
-        animator.speed = Helpers.Map(Mathf.Abs(body.linearVelocityX), 0, core.movementParams.HorizontalTopSpeed, 0.2f, 1f);
-
-        if (!core.IsGrounded || Mathf.Abs(body.linearVelocityX) < 0.1f) {
+        if (!character.IsGrounded || Mathf.Abs(character.rigidBody.linearVelocityX) < 0.1f) {
             IsStateComplete = true;
         }
+
+        ModulateAnimatorSpeed();
     }
 
     public override void FixedDo() {
@@ -21,6 +21,11 @@ public class WalkState : State {
     }
 
     public override void Exit() {
-        animator.speed = 1;
+        character.animator.speed = 1;
+    }
+
+    private void ModulateAnimatorSpeed() {
+        character.animator.speed = Helpers.Map(Mathf.Abs(character.rigidBody.linearVelocityX), 0, character.movementParams.HorizontalTopSpeed, 0.2f, 1f);
+
     }
 }

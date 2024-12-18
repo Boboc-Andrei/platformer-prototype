@@ -3,22 +3,22 @@ using UnityEngine;
 public class WallGravitySlideState: WallSlideState {
     new public AnimationClip animation;
     public override void Enter() {
-        animator.Play(animation.name);
-        core.GravityOverride = true;
-        body.gravityScale = movement.WallSlideGravity;
+        character.animator.Play(animation.name);
+        character.GravityOverride = true;
+        character.rigidBody.gravityScale = character.movementParams.WallSlideGravity;
     }
 
     public override void Do() {
-        if (!core.IsTouchingWall || core.IsGrounded || body.linearVelocityY > 0) {
+        if (!character.IsTouchingWall || character.IsGrounded || character.rigidBody.linearVelocityY > 0) {
             IsStateComplete = true;
         }
 
 
-        if(body.linearVelocityY < -movement.WallSlideMaximumVelocity) {
-            body.linearVelocityY *= movement.WallSlideDrag;
+        if(character.rigidBody.linearVelocityY < -character.movementParams.WallSlideMaximumVelocity) {
+            character.rigidBody.linearVelocityY *= character.movementParams.WallSlideDrag;
         }
-        else if(body.linearVelocityY > -movement.WallSlideMinimumVelocity) {
-            body.linearVelocityY = -movement.WallSlideMinimumVelocity;
+        else if(character.rigidBody.linearVelocityY > -character.movementParams.WallSlideMinimumVelocity) {
+            character.rigidBody.linearVelocityY = -character.movementParams.WallSlideMinimumVelocity;
         }
 
     }
@@ -29,6 +29,6 @@ public class WallGravitySlideState: WallSlideState {
     }
 
     public override void Exit() {
-        core.GravityOverride = false;
+        character.GravityOverride = false;
     }
 }

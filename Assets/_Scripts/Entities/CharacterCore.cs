@@ -4,12 +4,12 @@ using UnityEngine.Windows;
 
 public class CharacterCore : MonoBehaviour {
     [Header("Core Components")]
-    public Rigidbody2D body;
+    public Rigidbody2D rigidBody;
     public Animator animator;
-    public StateMachine machine;
+    public StateMachine stateMachine;
     public CharacterMovementParameters movementParams;
     public SpriteRenderer sprite;
-    public State currentState => machine.CurrentState;
+    public State currentState => stateMachine.CurrentState;
 
     [Header("Sensors")]
     public TerrainSensor groundCheck;
@@ -18,8 +18,7 @@ public class CharacterCore : MonoBehaviour {
 
     [Header("Movement")]
     public float HorizontalDrag;
-    public float HorizontalHeading;
-    public bool IsCrowdControlled;
+    public virtual float HorizontalInput { get; set; }
     public bool ApplyWalkingSpeedLimit = true;
     public bool FacingRight;
     public bool GravityOverride;
@@ -32,7 +31,7 @@ public class CharacterCore : MonoBehaviour {
 
 
     protected void SetupStates() {
-        machine = new StateMachine();
+        stateMachine = new StateMachine();
 
         State[] allChildStates = GetComponentsInChildren<State>();
         foreach (State state in allChildStates) {
@@ -40,51 +39,47 @@ public class CharacterCore : MonoBehaviour {
         }
     }
 
-    protected void RoundHorizontalVelocityToZero() {
-        if (Mathf.Abs(body.linearVelocityX) < 0.1) {
-            body.linearVelocityX = 0;
+    public void RoundHorizontalVelocityToZero() {
+        if (Mathf.Abs(rigidBody.linearVelocityX) < 0.1) {
+            rigidBody.linearVelocityX = 0;
         }
     }
 
-    protected void ApplyHorizontalFriction() {
-        if (HorizontalHeading == 0) {
-            body.linearVelocityX *= HorizontalDrag;
+    public void ApplyHorizontalFriction() {
+        if (HorizontalInput == 0) {
+            rigidBody.linearVelocityX *= HorizontalDrag;
         }
     }
 
-    protected void ApplyTerminalVelocity() {
-        body.linearVelocityY = Mathf.Clamp(body.linearVelocityY, -movementParams.TerminalVelocity, movementParams.TerminalVelocity);
+    public void ApplyTerminalVelocity() {
+        rigidBody.linearVelocityY = Mathf.Clamp(rigidBody.linearVelocityY, -movementParams.TerminalVelocity, movementParams.TerminalVelocity);
     }
 
     public void LimitWalkingSpeed() {
         if (ApplyWalkingSpeedLimit) {
-            body.linearVelocityX = Mathf.Clamp(body.linearVelocityX, -movementParams.HorizontalTopSpeed, movementParams.HorizontalTopSpeed);
+            rigidBody.linearVelocityX = Mathf.Clamp(rigidBody.linearVelocityX, -movementParams.HorizontalTopSpeed, movementParams.HorizontalTopSpeed);
         }
     }
 
-    protected void FaceMovementDirection() {
-        if (IsCrowdControlled) return;
-
-        if (HorizontalHeading != 0) {
-            FacingRight = HorizontalHeading > 0;
+    public void FaceMovementDirection() {
+        if (HorizontalInput != 0) {
+            FacingRight = HorizontalInput > 0;
         }
-        else if (body.linearVelocityX != 0) {
-            FacingRight = body.linearVelocityX > 0;
+        else if (rigidBody.linearVelocityX != 0) {
+            FacingRight = rigidBody.linearVelocityX > 0;
         }
 
         sprite.flipX = !FacingRight;
     }
 
-    protected void ApplyAdaptiveGravity() {
-        body.gravityScale = body.linearVelocityY > 0 ? movementParams.RisingGravity : movementParams.FallingGravity;
+    public void ApplyAdaptiveGravity() {
+        rigidBody.gravityScale = rigidBody.linearVelocityY > 0 ? movementParams.RisingGravity : movementParams.FallingGravity;
     }
 
     protected void HandleCoreMovement() {
-        RoundHorizontalVelocityToZero();
-        ApplyHorizontalFriction();
-        ApplyTerminalVelocity();
-        LimitWalkingSpeed();
-        FaceMovementDirection();
+        ApplyTerminalVelocity(); // MOVE TO AIRBORNE STATE
+        LimitWalkingSpeed(); // MOVE TO WALK STATE
+        FaceMovementDirection(); // MOVE TO ... ? let cores call this manually
     }
 
 #if UNITY_EDITOR
@@ -94,7 +89,7 @@ public class CharacterCore : MonoBehaviour {
 
     private void DrawStateGizmo() {
         if (Application.isPlaying && currentState != null) {
-            List<string> states = machine.GetActiveStateBranch();
+            List<string> states = stateMachine.GetActiveStateBranch();
             UnityEditor.Handles.Label(transform.position + Vector3.up * 1, "State: " + string.Join(" > ", states));
         }
     }

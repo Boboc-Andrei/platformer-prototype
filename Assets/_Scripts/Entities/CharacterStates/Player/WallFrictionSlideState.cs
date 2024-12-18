@@ -7,13 +7,13 @@ public class WallFrictionSlideState : WallSlideState
     }
 
     public override void Do() {
-        if(!core.IsTouchingWall || core.IsGrounded || body.linearVelocityY > 0) {
+        if(!character.IsTouchingWall || character.IsGrounded || character.rigidBody.linearVelocityY > 0) {
             IsStateComplete = true;
         }
     }
 
     public override void FixedDo() {
-        body.linearVelocityY = core.movementParams.WallSlideMaximumVelocity == 0 ? 0 : Mathf.Max(body.linearVelocityY, -core.movementParams.WallSlideMaximumVelocity);
+        character.rigidBody.linearVelocityY = character.movementParams.WallSlideMaximumVelocity == 0 ? 0 : Mathf.Max(character.rigidBody.linearVelocityY, -character.movementParams.WallSlideMaximumVelocity);
     }
 
     public override void Exit() {

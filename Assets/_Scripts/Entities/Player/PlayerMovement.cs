@@ -13,14 +13,13 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     public float jumpBufferCounter;
     public bool queueJump;
     public bool IsJumping;
-    public bool IsHorizontalMovementDisabled;
+    public bool IsWallJumping;
 
     [Header("States")]
-    [SerializeField] private IdleState idleState;
-    [SerializeField] private WalkState walkState;
     [SerializeField] private AirborneState airborneState;
-    [SerializeField] private WallSlideState wallSlideState;
-    [SerializeField] private LedgeGrabState ledgeGrabState;
+    [SerializeField] private GroundedState groundedState;
+    [SerializeField] private OnWallState onWallState;
+    [SerializeField] private OnLedgeState onLedgeState;
 
     [Header("Ledge sensors")]
 
@@ -46,7 +45,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     private void Start() {
         SetupStates();
-        machine.Set(idleState);
+        stateMachine.Set(groundedState);
 
     }
 
@@ -54,26 +53,26 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         HandleJumpInput();
         UpdateJumpFlags();
         SelectState();
-        machine.CurrentState.Do();
+        stateMachine.CurrentState.Do();
     }
 
     void FixedUpdate() {
         HandleHorizontalMovement();
         HandleGravityScale();
-        machine.CurrentState.FixedDo(); 
+        stateMachine.CurrentState.FixedDo(); 
         HandleCoreMovement();
     }
 
     public void HandleHorizontalMovement() {
-        if (IsCrowdControlled) return;
-        HorizontalHeading = IsHorizontalMovementDisabled ? Mathf.Sign(body.linearVelocityX) : input.HorizontalMovementInput;
-        body.linearVelocityX += movementParams.HorizontalAcceleration * HorizontalHeading;
+        HorizontalInput = IsWallJumping ? Mathf.Sign(rigidBody.linearVelocityX) : input.HorizontalMovementInput;
+        rigidBody.linearVelocityX += movementParams.HorizontalAcceleration * HorizontalInput;
     }
 
+    // MOVE TO AIRBORNE STATE AND JUMP STATE RESPECTIVELY
     public void HandleGravityScale() {
         if (GravityOverride) return;
         if (JumpEndedEarly) {
-            body.gravityScale = movementParams.FallingGravity;
+            rigidBody.gravityScale = movementParams.FallingGravity;
             JumpEndedEarly = false;
         }
         else {
@@ -83,23 +82,18 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     private void SelectState() {
         if (IsGrounded) {
-            if (input.HorizontalMovementInput == 0 && Mathf.Abs(body.linearVelocityX) < 0.1f) {
-                machine.Set(idleState);
-            }
-            else {
-                machine.Set(walkState);
-            }
+            stateMachine.Set(groundedState);
         }
         else {
             if(IsGrabbingLedge()) {
-                print("Grabbing ledge");
+                print("Entering ledge grab state");
                 //machine.Set(ledgeGrabState);
             }
-            if (IsGrabbingWall() && body.linearVelocityY <= 0) {
-                machine.Set(wallSlideState);
+            else if (IsGrabbingWall() && rigidBody.linearVelocityY <= 0) {
+                stateMachine.Set(onWallState);
             }
             else {
-                machine.Set(airborneState);
+                stateMachine.Set(airborneState);
             }
         }
     }
@@ -111,8 +105,9 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         jumpBufferCounter = JumpBufferTime;
     }
 
+    // MOVE TO JUMP STATE IF POSSIBLE
     private void OnJumpReleased() {
-        if (IsJumping && body.linearVelocityY > 0) {
+        if (IsJumping && rigidBody.linearVelocityY > 0) {
             EndJumpEarly();
         }
     }
@@ -122,11 +117,11 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     }
 
     private bool CanCoyoteJump() {
-        return TimeSinceGrounded < movementParams.CoyoteTime && body.linearVelocityY <= 0;
+        return TimeSinceGrounded < movementParams.CoyoteTime && rigidBody.linearVelocityY <= 0;
     }
 
     private void HandleJumpInput() {
-        if (queueJump && !IsCrowdControlled) {
+        if (queueJump) {
             if (CanJump()) {
                 Jump();
             }
@@ -136,20 +131,22 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         }
     }
 
+    // MOVE TO JUMP STATE ?
     private void Jump() {
         IsJumping = true;
         queueJump = false;
         JumpEndedEarly = false;
-        body.linearVelocityY = movementParams.JumpSpeed;
+        rigidBody.linearVelocityY = movementParams.JumpSpeed;
     }
 
+    // MOVE TO JUMP STATE ?
     private void EndJumpEarly() {
         JumpEndedEarly = true;
-        body.linearVelocityY *= movementParams.JumpCutoffFactor;
+        rigidBody.linearVelocityY *= movementParams.JumpCutoffFactor;
     }
 
     private void UpdateJumpFlags() {
-        if (IsGrounded && body.linearVelocityY <= 0) {
+        if (IsGrounded && rigidBody.linearVelocityY <= 0) {
             JumpEndedEarly = false;
             IsJumping = false;
         }
@@ -161,17 +158,19 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         }
     }
 
+    // MOVE TO WALL JUMP STATE ?
     private void WallJump() {
         int nearestWallDirection = IsTouchingLeftWall ? 1 : -1;
-        body.linearVelocityX = nearestWallDirection * movementParams.HorizontalTopSpeed;
+        rigidBody.linearVelocityX = nearestWallDirection * movementParams.HorizontalTopSpeed;
         StartCoroutine(DisableMovementForSeconds(0.3f));
         Jump();
     }
 
+    // MOVE TO WALL JUMP STATE ?
     private IEnumerator DisableMovementForSeconds(float time) {
-        IsHorizontalMovementDisabled = true;
+        IsWallJumping = true;
         yield return new WaitForSeconds(time);
-        IsHorizontalMovementDisabled = false;
+        IsWallJumping = false;
     }
 
     #endregion
@@ -191,13 +190,13 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     #region Data Persistence
     public void LoadPersistentData(GameData data) {
-        body.position = data.playerPosition;
-        body.linearVelocity = data.playerVelocity;
+        rigidBody.position = data.playerPosition;
+        rigidBody.linearVelocity = data.playerVelocity;
     }
 
     public void SavePersistentData(ref GameData data) {
-        data.playerPosition = body.position;
-        data.playerVelocity = body.linearVelocity;
+        data.playerPosition = rigidBody.position;
+        data.playerVelocity = rigidBody.linearVelocity;
     }
 
     public void SetDefaultPersistentData(ref GameData data) {

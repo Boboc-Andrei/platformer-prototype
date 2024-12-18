@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        Player.body.position = (Vector2)levelTransitions[spawnGateId].transform.position + spawnPositionOffset;
+        Player.rigidBody.position = (Vector2)levelTransitions[spawnGateId].transform.position + spawnPositionOffset;
         levelTransitions[spawnGateId].isActive = false;
 
         CameraSetup();
