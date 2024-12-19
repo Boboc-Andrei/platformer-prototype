@@ -9,8 +9,8 @@ public class StateMachine {
 
     public void Set(State newState, bool forceReset = false) {
         if (CurrentState != newState || forceReset) {
-            string currentStateName = CurrentState == null ? "Null" : CurrentState.name;
-            Debug.Log($"Transitioning from {currentStateName} to {newState?.name}");
+            //string currentStateName = CurrentState == null ? "Null" : CurrentState.name;
+            //Debug.Log($"Transitioning from {currentStateName} to {newState?.name}");
             CurrentState?.ExitBranch();
             CurrentState = newState;
             CurrentState.Initialise(this);

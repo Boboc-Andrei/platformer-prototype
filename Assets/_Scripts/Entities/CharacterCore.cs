@@ -19,10 +19,11 @@ public class CharacterCore : MonoBehaviour {
 
     [Header("Movement")]
     public float HorizontalDrag;
-    public virtual float HorizontalInput { get; set; }
     public bool ApplyWalkingSpeedLimit = true;
     public bool FacingRight;
     public bool GravityOverride;
+    public bool DisableHorizontalMovement;
+    public bool DisableHorizontalFacing;
 
     public bool IsGrounded => groundCheck.IsTouching;
     public float TimeSinceGrounded => groundCheck.TimeSinceTouched;
@@ -30,6 +31,7 @@ public class CharacterCore : MonoBehaviour {
     public bool IsTouchingRightWall => rightWallCheck.IsTouching;
     public bool IsTouchingWall => leftWallCheck.IsTouching || rightWallCheck.IsTouching;
 
+    public bool IsGrabbingWall => IsTouchingWall && input.Grab;
 
     protected void SetupStates() {
         stateMachine = new StateMachine();
@@ -47,7 +49,7 @@ public class CharacterCore : MonoBehaviour {
     }
 
     public void ApplyHorizontalFriction() {
-        if (HorizontalInput == 0) {
+        if (input.HorizontalMovement == 0) {
             rigidBody.linearVelocityX *= HorizontalDrag;
         }
     }
@@ -57,30 +59,28 @@ public class CharacterCore : MonoBehaviour {
     }
 
     public void LimitWalkingSpeed() {
-        if (ApplyWalkingSpeedLimit) {
-            rigidBody.linearVelocityX = Mathf.Clamp(rigidBody.linearVelocityX, -movementParams.HorizontalTopSpeed, movementParams.HorizontalTopSpeed);
-        }
+        if (!ApplyWalkingSpeedLimit) return;
+        rigidBody.linearVelocityX = Mathf.Clamp(rigidBody.linearVelocityX, -movementParams.HorizontalTopSpeed, movementParams.HorizontalTopSpeed);
     }
 
     public void FaceMovementDirection() {
-        if (HorizontalInput != 0) {
-            FacingRight = HorizontalInput > 0;
+        if (DisableHorizontalFacing) return;
+
+        if (input.HorizontalMovement != 0) {
+            FaceTowards(input.HorizontalMovement);
         }
         else if (rigidBody.linearVelocityX != 0) {
-            FacingRight = rigidBody.linearVelocityX > 0;
+            FaceTowards(rigidBody.linearVelocityX);
         }
 
-        sprite.flipX = !FacingRight;
+    }
+
+    public void FaceTowards(float xDirection) {
+        sprite.flipX = xDirection < 0;
     }
 
     public void ApplyAdaptiveGravity() {
         rigidBody.gravityScale = rigidBody.linearVelocityY > 0 ? movementParams.RisingGravity : movementParams.FallingGravity;
-    }
-
-    protected void HandleCoreMovement() {
-        ApplyTerminalVelocity(); // MOVE TO AIRBORNE STATE
-        LimitWalkingSpeed(); // MOVE TO WALK STATE
-        FaceMovementDirection(); // MOVE TO ... ? let cores call this manually
     }
 
 #if UNITY_EDITOR
@@ -93,6 +93,12 @@ public class CharacterCore : MonoBehaviour {
             List<string> states = stateMachine.GetActiveStateBranch();
             UnityEditor.Handles.Label(transform.position + Vector3.up * 1, "State: " + string.Join(" > ", states));
         }
+    }
+
+
+    
+    public virtual bool CanJump() {
+        return IsGrounded;
     }
 #endif
 }

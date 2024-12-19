@@ -51,21 +51,19 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         HandleHorizontalMovement();
         ApplyHorizontalFriction();
         HandleGravityScale();
-        stateMachine.CurrentState.FixedDoBranch(); 
-        HandleCoreMovement();
+        FaceMovementDirection();
+        stateMachine.CurrentState.FixedDoBranch();
+
+        LimitWalkingSpeed();
     }
 
     public void HandleHorizontalMovement() {
-        HorizontalInput = IsWallJumping ? Mathf.Sign(rigidBody.linearVelocityX) : input.HorizontalMovement;
-        rigidBody.linearVelocityX += movementParams.HorizontalAcceleration * HorizontalInput;
+        if (DisableHorizontalMovement) return;
+        rigidBody.linearVelocityX += movementParams.HorizontalAcceleration * input.HorizontalMovement;
     }
 
-    // MOVE TO AIRBORNE STATE AND JUMP STATE RESPECTIVELY
     public void HandleGravityScale() {
         if (GravityOverride) return;
-        if (input.CancelJump) {
-            rigidBody.gravityScale = movementParams.FallingGravity;
-        }
         else {
             ApplyAdaptiveGravity();
         }
@@ -76,11 +74,11 @@ public class PlayerMovement : CharacterCore, IPersistentData {
             stateMachine.Set(groundedState);
         }
         else {
-            if(IsGrabbingLedge()) {
+            if (IsGrabbingLedge()) {
                 print("Entering ledge grab state");
                 //machine.Set(ledgeGrabState);
             }
-            else if (IsGrabbingWall() && rigidBody.linearVelocityY <= 0) {
+            else if (IsGrabbingWall && rigidBody.linearVelocityY <= 0) {
                 stateMachine.Set(onWallState);
             }
             else {
@@ -89,11 +87,14 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         }
     }
 
-
     #region Jump Methods
 
-    private bool CanJump() {
-        return IsGrounded || CanCoyoteJump();
+    public override bool CanJump() {
+        return IsGrounded || CanCoyoteJump() || CanWallJump();
+    }
+
+    private bool CanWallJump() {
+        return IsTouchingWall && rigidBody.linearVelocityY <= 0;
     }
 
     private bool CanCoyoteJump() {
@@ -101,45 +102,22 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     }
 
     private void HandleJumpInput() {
-        if (input.Jump) {
-            if (CanJump()) {
-                Jump();
-            }
-            else if (IsTouchingWall) {
-                WallJump();
-            }
+
+        if (input.Jump && CanJump()) {
+            Jump();
         }
+
     }
 
-    // MOVE TO JUMP STATE ?
     private void Jump() {
         rigidBody.linearVelocityY = movementParams.JumpSpeed;
-    }
-
-
-    // MOVE TO WALL JUMP STATE ?
-    private void WallJump() {
-        int nearestWallDirection = IsTouchingLeftWall ? 1 : -1;
-        rigidBody.linearVelocityX = nearestWallDirection * movementParams.HorizontalTopSpeed;
-        StartCoroutine(DisableMovementForSeconds(0.3f));
-        Jump();
-    }
-
-    // MOVE TO WALL JUMP STATE ?
-    private IEnumerator DisableMovementForSeconds(float time) {
-        IsWallJumping = true;
-        yield return new WaitForSeconds(time);
-        IsWallJumping = false;
     }
 
     #endregion
 
     #region Wall Hang Methods
-    private bool IsGrabbingWall() {
-        return IsTouchingWall && input.Grab;
-    }
 
-    private bool IsGrabbingLedge() {
+    public bool IsGrabbingLedge() {
         //TODO: implement ledge grab
         return false;
     }

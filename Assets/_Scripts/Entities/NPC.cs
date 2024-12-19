@@ -18,7 +18,6 @@ public class NPC : CharacterCore {
     }
 
     private void FixedUpdate() {
-        HandleCoreMovement();
         if (currentState.IsStateComplete) {
 
         }

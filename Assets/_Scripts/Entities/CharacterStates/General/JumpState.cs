@@ -2,24 +2,23 @@
 
 public class JumpState : State{
 
-    public WallJumpState wallJumpState;
 
     public override void Enter() {
-        print("Entered jump state");
-        if(character.IsTouchingWall) {
-            SetSubstate(wallJumpState);
-        }
+
     }
 
     public override void Do() {
+        if (IsStateComplete) return;
+
         if(character.input.CancelJump) {
             character.rigidBody.linearVelocityY *= character.movementParams.JumpCutoffFactor;
-            print("ending jump early");
+            character.rigidBody.gravityScale = character.movementParams.FallingGravity;
             IsStateComplete = true;
         }
         if (character.rigidBody.linearVelocityY <= 0) {
             IsStateComplete = true;
         }
+
     }
 
     public override void Exit() {

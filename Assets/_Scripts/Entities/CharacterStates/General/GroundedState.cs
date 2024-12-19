@@ -6,7 +6,6 @@ public class GroundedState : State {
     public EmptyState emptyState;
 
     public override void Enter() {
-        print("entered grounded state");
         SetSubstate(idleState, true);
     }
 
@@ -14,11 +13,11 @@ public class GroundedState : State {
         if (!character.IsGrounded) {
             IsStateComplete = true;
         }
-        if (character.input.HorizontalMovement == 0 && Mathf.Abs(character.rigidBody.linearVelocityX) < 0.1f) {
-            SetSubstate(idleState);
+        if (character.input.HorizontalMovement != 0 || Mathf.Abs(character.rigidBody.linearVelocityX) > 0.1f) {
+            SetSubstate(walkState);
         }
         else {
-            SetSubstate(walkState);
+            SetSubstate(idleState);
         }
 
         character.RoundHorizontalVelocityToZero();
@@ -30,6 +29,6 @@ public class GroundedState : State {
     }
 
     public override void Exit() {
-        print("leaving grounded state");
+
     }
 }

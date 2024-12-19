@@ -14,16 +14,16 @@ public class NavigateState : State {
 
     public override void Do() {
         if (Mathf.Abs(character.transform.position.x - destination.x) < threshold) {
-            character.HorizontalInput = 0;
+            character.input.HorizontalMovement = 0;
             IsStateComplete = true;
         }
         else {
-            character.HorizontalInput = Mathf.Sign(destination.x - character.rigidBody.position.x);
+            character.input.HorizontalMovement = Mathf.Sign(destination.x - character.rigidBody.position.x);
         }
 
     }
 
     public override void FixedDo() {
-        character.rigidBody.linearVelocityX += character.movementParams.HorizontalAcceleration * character.HorizontalInput;
+        character.rigidBody.linearVelocityX += character.movementParams.HorizontalAcceleration * character.input.HorizontalMovement;
     }
 }

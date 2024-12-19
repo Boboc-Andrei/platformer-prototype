@@ -9,7 +9,6 @@ public class IdleState : State {
     private float timeElapsed;
     private bool isPlayingSecondaryAnimation;
     public override void Enter() {
-        print("entered idle state. playing idle animation");
         character.animator.Play(animation.name);
     }
     public override void Do() {
@@ -55,6 +54,6 @@ public class IdleState : State {
     }
 
     public override void Exit() {
-        print("left idle state");
+
     }
 }

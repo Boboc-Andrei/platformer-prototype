@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433fd2d8e0cc2746a5e9414cfd28dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallGrabState: {fileID: 0}
-  wallSlideState: {fileID: 5413277764114547750}
+  wallGrabState: {fileID: 7559390844850899400}
+  wallSlideState: {fileID: 1520534918221820982}
+  animationClip: {fileID: 7400000, guid: de55dee4815ba9445a4f53ae189be4e1, type: 2}
 --- !u!1 &1226392021595993554
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +214,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animation: {fileID: 7400000, guid: ceda2dced0eea8c4786497225150f610, type: 2}
+--- !u!1 &2134328767899468283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207101392173276965}
+  - component: {fileID: 1692964278362953681}
+  m_Layer: 0
+  m_Name: WallJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207101392173276965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134328767899468283}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8730711961027495995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692964278362953681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134328767899468283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afda932de670dc04bb751f732558581d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDisableDuration: 0.25
 --- !u!1 &2713454895792395659
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +514,50 @@ Transform:
   - {fileID: 6581908486101686470}
   m_Father: {fileID: 248108595456402200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3639598668838438031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308656076533796816}
+  - component: {fileID: 3015775308043202303}
+  m_Layer: 0
+  m_Name: Falling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308656076533796816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639598668838438031}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8730711961027495995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3015775308043202303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639598668838438031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a28aa6dab7b7784880236e390408afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4029344611515680797
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8823487361822182544}
-  - component: {fileID: 5413277764114547750}
+  - component: {fileID: 1520534918221820982}
   m_Layer: 6
   m_Name: WallSlide
   m_TagString: Untagged
@@ -867,7 +957,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8730711961027495995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5413277764114547750
+--- !u!114 &1520534918221820982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -876,10 +966,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5762253167769432868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb33230e21fc23440981b01e0a07e537, type: 3}
+  m_Script: {fileID: 11500000, guid: e411a443b09d6a44d99e2c10380bf800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 7400000, guid: de55dee4815ba9445a4f53ae189be4e1, type: 2}
 --- !u!1 &5832278110687668708
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +1003,51 @@ Transform:
   - {fileID: 4846740320602933483}
   m_Father: {fileID: 1705144624488736904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5958164603914313617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 484021265179393714}
+  - component: {fileID: 7559390844850899400}
+  m_Layer: 0
+  m_Name: WallGrab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &484021265179393714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958164603914313617}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8730711961027495995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7559390844850899400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958164603914313617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b154be4652b5c9648a8710d51d93c411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hangTime: 1
 --- !u!1 &7226532776521053397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpState: {fileID: 2987049995584679097}
+  wallJumpState: {fileID: 1692964278362953681}
+  fallingState: {fileID: 3015775308043202303}
   animation: {fileID: 7400000, guid: 91e004e26a928524089c45fd4d814603, type: 2}
 --- !u!1 &8690319377552248609
 GameObject:
@@ -1276,10 +1412,13 @@ Transform:
   - {fileID: 8481274094886311742}
   - {fileID: 1136215889177943779}
   - {fileID: 7008696439542828119}
-  - {fileID: 93372846134544147}
+  - {fileID: 484021265179393714}
   - {fileID: 8823487361822182544}
+  - {fileID: 93372846134544147}
   - {fileID: 8777637684642823976}
+  - {fileID: 1207101392173276965}
   - {fileID: 5976361555423562971}
+  - {fileID: 308656076533796816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3354935241310276082
@@ -1333,6 +1472,8 @@ MonoBehaviour:
   ApplyWalkingSpeedLimit: 1
   FacingRight: 0
   GravityOverride: 0
+  DisableHorizontalMovement: 0
+  DisableHorizontalFacing: 0
   IsJumping: 0
   IsWallJumping: 0
   airborneState: {fileID: 267223775083067501}
