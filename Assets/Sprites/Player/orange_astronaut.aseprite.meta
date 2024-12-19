@@ -2,7 +2,47 @@ fileFormatVersion: 2
 guid: b1f250749a92ec446894e851fc28ec50
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Free Fall
+    second: {fileID: 7400000, guid: d2a4860b8e4791b4f9ea3937ebc0e47c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: 08040d351a964b243a0fa5b697c7d7b1, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle Shine
+    second: {fileID: 7400000, guid: 15acd8bfe4be784439bcb5f85d881658, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump
+    second: {fileID: 7400000, guid: 91e004e26a928524089c45fd4d814603, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Ledge Climb
+    second: {fileID: 7400000, guid: 0a3af4a397e313343868bb37c46e4bc0, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Ledge Hang
+    second: {fileID: 7400000, guid: dc90c3635d3665449b1e556bfb4d26e0, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Walk
+    second: {fileID: 7400000, guid: ceda2dced0eea8c4786497225150f610, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Wall Hang
+    second: {fileID: 7400000, guid: de55dee4815ba9445a4f53ae189be4e1, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -97,7 +137,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638699931579643304
+  platformSettingsDirtyTick: 638702304587455371
   textureAssetName: 
   singleSpriteImportData:
   - name: 

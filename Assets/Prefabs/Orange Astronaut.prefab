@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b66f3283305ed74d9afcf6bb29c759e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: -5011058855559727678, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  animation: {fileID: 7400000, guid: dc90c3635d3665449b1e556bfb4d26e0, type: 2}
 --- !u!1 &1271628363176316086
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8ddd0da575e8f4f9e4f85ee5af326c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 2667949614841947897, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  animation: {fileID: 7400000, guid: ceda2dced0eea8c4786497225150f610, type: 2}
 --- !u!1 &2713454895792395659
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleState: {fileID: 2369973504862786110}
   walkState: {fileID: 4015471873744707883}
+  emptyState: {fileID: 3518817826186802928}
 --- !u!1 &4929389462793194398
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb33230e21fc23440981b01e0a07e537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: -3123915678239375600, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  animation: {fileID: 7400000, guid: de55dee4815ba9445a4f53ae189be4e1, type: 2}
 --- !u!1 &5832278110687668708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1013,7 @@ Animator:
   m_GameObject: {fileID: 7226532776521053397}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 1543699878052371704, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  m_Controller: {fileID: 9100000, guid: c849cd7079cf7b14a86c48717cc9f6c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1068,9 +1069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637e318c1388fca4f8cb0fc1cddc37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: -3100369314251171874, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  animation: {fileID: 7400000, guid: 08040d351a964b243a0fa5b697c7d7b1, type: 2}
   secondaryAnimations:
-  - {fileID: 3154184486241597324, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  - {fileID: 7400000, guid: 15acd8bfe4be784439bcb5f85d881658, type: 2}
   secondaryAnimationFrequency: 10
 --- !u!1 &8313223698448400576
 GameObject:
@@ -1117,8 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpState: {fileID: 2987049995584679097}
-  emptyState: {fileID: 3518817826186802928}
-  animation: {fileID: 5539831331247536789, guid: b1f250749a92ec446894e851fc28ec50, type: 3}
+  animation: {fileID: 7400000, guid: 91e004e26a928524089c45fd4d814603, type: 2}
 --- !u!1 &8690319377552248609
 GameObject:
   m_ObjectHideFlags: 0

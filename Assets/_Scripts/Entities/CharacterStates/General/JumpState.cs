@@ -2,8 +2,13 @@
 
 public class JumpState : State{
 
+    public WallJumpState wallJumpState;
+
     public override void Enter() {
         print("Entered jump state");
+        if(character.IsTouchingWall) {
+            SetSubstate(wallJumpState);
+        }
     }
 
     public override void Do() {

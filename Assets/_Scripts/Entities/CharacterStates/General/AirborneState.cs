@@ -4,7 +4,6 @@ using UnityEngine;
 public class AirborneState : State {
 
     public JumpState jumpState;
-    public EmptyState emptyState;
 
     new public AnimationClip animation;
     public override void Enter() {
@@ -24,9 +23,6 @@ public class AirborneState : State {
             IsStateComplete = true;
         }
 
-        if(currentSubstate == jumpState && currentSubstate.IsStateComplete) {
-            SetSubstate(emptyState);
-        }
 
     }
 
