@@ -9,8 +9,8 @@ public class IdleState : State {
     private float timeElapsed;
     private bool isPlayingSecondaryAnimation;
     public override void Enter() {
+        print("entered idle state. playing idle animation");
         character.animator.Play(animation.name);
-
     }
     public override void Do() {
         if (!character.IsGrounded || Mathf.Abs(character.rigidBody.linearVelocityX) > 0.1) {
@@ -55,6 +55,6 @@ public class IdleState : State {
     }
 
     public override void Exit() {
-
+        print("left idle state");
     }
 }

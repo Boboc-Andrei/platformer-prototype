@@ -39,4 +39,8 @@ public abstract class State : MonoBehaviour {
         currentSubstate?.FixedDoBranch();
     }
     public virtual void Exit() { }
+    public virtual void ExitBranch() {
+        Exit();
+        currentSubstate?.ExitBranch();
+    }
 }

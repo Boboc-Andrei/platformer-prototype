@@ -6,6 +6,7 @@ public class WalkState : State {
 
     public override void Enter() {
         character.HorizontalDrag = character.movementParams.GroundHorizontalDrag;
+        print("entered walk state. playing walk animation");
         character.animator.Play(animation.name);
     }
     public override void Do() {
@@ -21,6 +22,7 @@ public class WalkState : State {
     }
 
     public override void Exit() {
+        print("leaving walking state");
         character.animator.speed = 1;
     }
 

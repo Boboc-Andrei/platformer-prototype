@@ -9,6 +9,7 @@ public class CharacterCore : MonoBehaviour {
     public StateMachine stateMachine;
     public CharacterMovementParameters movementParams;
     public SpriteRenderer sprite;
+    public CharacterController input;
     public State currentState => stateMachine.CurrentState;
 
     [Header("Sensors")]

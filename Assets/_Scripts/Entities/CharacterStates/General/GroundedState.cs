@@ -4,33 +4,31 @@ public class GroundedState : State {
     public IdleState idleState;
     public WalkState walkState;
 
-    public AnimationClip animationClip;
     public override void Enter() {
-        character.animator.Play(animationClip.name);
+        print("entered grounded state");
+        SetSubstate(idleState);
     }
 
     public override void Do() {
         if (!character.IsGrounded) {
             IsStateComplete = true;
         }
-
-        if (character.input.HorizontalMovementInput != 0 && Mathf.Abs(character.rigidBody.linearVelocityX) >= 0.1f) {
+        if (character.input.HorizontalMovement != 0 && Mathf.Abs(character.rigidBody.linearVelocityX) >= 0.1f) {
             SetSubstate(walkState);
         }
         else {
             SetSubstate(idleState);
         }
-
+        print(currentSubstate.name);
 
         character.RoundHorizontalVelocityToZero();
-        character.ApplyHorizontalFriction();
-
-        currentSubstate.DoBranch();
     }
 
     public override void FixedDo() {
-        currentSubstate.FixedDoBranch();
+
     }
 
-    public override void Exit() { }
+    public override void Exit() {
+        print("leaving grounded state");
+    }
 }

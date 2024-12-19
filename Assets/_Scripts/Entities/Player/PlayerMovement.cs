@@ -1,17 +1,12 @@
 using System;
 using System.Collections;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class PlayerMovement : CharacterCore, IPersistentData {
 
     [Header("Player movement")]
-    public InputManager input;
-    public bool JumpEndedEarly;
-    public float JumpBufferTime;
-    public float jumpBufferCounter;
-    public bool queueJump;
+
     public bool IsJumping;
     public bool IsWallJumping;
 
@@ -28,13 +23,11 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     #region Event Subscription
     private void OnEnable() {
-        input.OnJumpPressed += OnJumpPressed;
-        input.OnJumpReleased += OnJumpReleased;
+
     }
 
     private void OnDisable() {
-        input.OnJumpPressed -= OnJumpPressed;
-        input.OnJumpReleased -= OnJumpReleased;
+
     }
     #endregion
 
@@ -46,34 +39,32 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     private void Start() {
         SetupStates();
         stateMachine.Set(groundedState);
-
     }
 
     void Update() {
         HandleJumpInput();
-        UpdateJumpFlags();
         SelectState();
-        stateMachine.CurrentState.Do();
+        stateMachine.CurrentState.DoBranch();
     }
 
     void FixedUpdate() {
         HandleHorizontalMovement();
+        ApplyHorizontalFriction();
         HandleGravityScale();
-        stateMachine.CurrentState.FixedDo(); 
+        stateMachine.CurrentState.FixedDoBranch(); 
         HandleCoreMovement();
     }
 
     public void HandleHorizontalMovement() {
-        HorizontalInput = IsWallJumping ? Mathf.Sign(rigidBody.linearVelocityX) : input.HorizontalMovementInput;
+        HorizontalInput = IsWallJumping ? Mathf.Sign(rigidBody.linearVelocityX) : input.HorizontalMovement;
         rigidBody.linearVelocityX += movementParams.HorizontalAcceleration * HorizontalInput;
     }
 
     // MOVE TO AIRBORNE STATE AND JUMP STATE RESPECTIVELY
     public void HandleGravityScale() {
         if (GravityOverride) return;
-        if (JumpEndedEarly) {
+        if (input.CancelJump) {
             rigidBody.gravityScale = movementParams.FallingGravity;
-            JumpEndedEarly = false;
         }
         else {
             ApplyAdaptiveGravity();
@@ -100,17 +91,6 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
 
     #region Jump Methods
-    private void OnJumpPressed() {
-        queueJump = true;
-        jumpBufferCounter = JumpBufferTime;
-    }
-
-    // MOVE TO JUMP STATE IF POSSIBLE
-    private void OnJumpReleased() {
-        if (IsJumping && rigidBody.linearVelocityY > 0) {
-            EndJumpEarly();
-        }
-    }
 
     private bool CanJump() {
         return IsGrounded || CanCoyoteJump();
@@ -121,7 +101,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     }
 
     private void HandleJumpInput() {
-        if (queueJump) {
+        if (input.Jump) {
             if (CanJump()) {
                 Jump();
             }
@@ -133,30 +113,9 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     // MOVE TO JUMP STATE ?
     private void Jump() {
-        IsJumping = true;
-        queueJump = false;
-        JumpEndedEarly = false;
         rigidBody.linearVelocityY = movementParams.JumpSpeed;
     }
 
-    // MOVE TO JUMP STATE ?
-    private void EndJumpEarly() {
-        JumpEndedEarly = true;
-        rigidBody.linearVelocityY *= movementParams.JumpCutoffFactor;
-    }
-
-    private void UpdateJumpFlags() {
-        if (IsGrounded && rigidBody.linearVelocityY <= 0) {
-            JumpEndedEarly = false;
-            IsJumping = false;
-        }
-        if (queueJump) {
-            jumpBufferCounter -= Time.deltaTime;
-            if (jumpBufferCounter < 0) {
-                queueJump = false;
-            }
-        }
-    }
 
     // MOVE TO WALL JUMP STATE ?
     private void WallJump() {
@@ -177,14 +136,13 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     #region Wall Hang Methods
     private bool IsGrabbingWall() {
-        return IsTouchingWall && input.GrabPressed;
+        return IsTouchingWall && input.Grab;
     }
 
     private bool IsGrabbingLedge() {
-        print("ledge grab still not implemented");
+        //TODO: implement ledge grab
         return false;
     }
-
 
     #endregion
 

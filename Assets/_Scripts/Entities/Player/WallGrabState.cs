@@ -1,3 +1,3 @@
-﻿internal class WallGrabState {
+﻿public class WallGrabState: State {
 
 }

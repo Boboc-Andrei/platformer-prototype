@@ -8,7 +8,7 @@ public class StateMachine {
 
     public void Set(State newState, bool forceReset = false) {
         if (CurrentState != newState || forceReset) {
-            CurrentState?.Exit();
+            CurrentState?.ExitBranch();
             CurrentState = newState;
             CurrentState.Initialise(this);
             CurrentState.Enter();

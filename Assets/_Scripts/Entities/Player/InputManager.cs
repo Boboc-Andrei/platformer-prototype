@@ -1,44 +1,50 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
-{
+public class InputManager : CharacterController {
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction grabAction;
 
-    public event System.Action OnJumpPressed;
-    public event System.Action OnJumpReleased;
+    private float JumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
 
-    public float HorizontalMovementInput;
-    public float VerticalMovementInput;
-    public bool GrabPressed;
-
-    void Start()
-    {
+    void Start() {
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         grabAction = InputSystem.actions.FindAction("Grab");
 
         jumpAction.started += OnJumpActionStarted;
         jumpAction.canceled += OnJumpActionCanceled;
-
     }
 
     void Update() {
         Vector2 movementInput = moveAction.ReadValue<Vector2>();
+        HorizontalMovement = movementInput.x;
+        VerticalMovement = movementInput.y;
 
-        HorizontalMovementInput = movementInput.x;
-        VerticalMovementInput = movementInput.y;
+        Grab = grabAction.ReadValue<float>() > 0;
 
-        GrabPressed = grabAction.ReadValue<float>() > 0;
+        jumpBufferCounter -= Time.deltaTime;
+        if (jumpBufferCounter <= 0) {
+            Jump = false;
+        }
+
     }
 
     private void OnJumpActionStarted(InputAction.CallbackContext obj) {
-        OnJumpPressed?.Invoke();
+        Jump = true;
+        jumpBufferCounter = JumpBufferTime;
     }
 
     private void OnJumpActionCanceled(InputAction.CallbackContext obj) {
-        OnJumpReleased?.Invoke();
+        StartCoroutine((EndJumpEarly()) );
+    }
+
+    private IEnumerator EndJumpEarly() {
+        CancelJump = true;
+        yield return new WaitForEndOfFrame();
+        CancelJump = false;
     }
 }
