@@ -5,10 +5,6 @@ using UnityEngine.TextCore.Text;
 
 public class PlayerMovement : CharacterCore, IPersistentData {
 
-    [Header("Player movement")]
-
-    public bool IsJumping;
-    public bool IsWallJumping;
 
     [Header("States")]
     [SerializeField] private AirborneState airborneState;
@@ -44,6 +40,7 @@ public class PlayerMovement : CharacterCore, IPersistentData {
     void Update() {
         HandleJumpInput();
         SelectState();
+
         stateMachine.CurrentState.DoBranch();
     }
 
@@ -52,14 +49,14 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         ApplyHorizontalFriction();
         HandleGravityScale();
         FaceMovementDirection();
-        stateMachine.CurrentState.FixedDoBranch();
-
         LimitWalkingSpeed();
+
+        stateMachine.CurrentState.FixedDoBranch();
     }
 
     public void HandleHorizontalMovement() {
         if (DisableHorizontalMovement) return;
-        rigidBody.linearVelocityX += movementParams.HorizontalAcceleration * input.HorizontalMovement;
+        ApplyHorizontalAcceleration(input.HorizontalMovement * movementParams.HorizontalAcceleration);
     }
 
     public void HandleGravityScale() {
@@ -73,28 +70,27 @@ public class PlayerMovement : CharacterCore, IPersistentData {
         if (IsGrounded) {
             stateMachine.Set(groundedState);
         }
-        else {
-            if (IsGrabbingLedge()) {
-                print("Entering ledge grab state");
-                //machine.Set(ledgeGrabState);
-            }
-            else if (IsGrabbingWall && rigidBody.linearVelocityY <= 0) {
-                stateMachine.Set(onWallState);
-            }
-            else {
-                stateMachine.Set(airborneState);
-            }
+        else if (IsGrabbingLedge()) {
+            print("Entering ledge grab state");
+            //machine.Set(onLedgeState);
         }
+        else if (IsGrabbingWall && rigidBody.linearVelocityY <= 0) {
+            stateMachine.Set(onWallState);
+        }
+        else {
+            stateMachine.Set(airborneState);
+        }
+
     }
 
     #region Jump Methods
 
     public override bool CanJump() {
-        return IsGrounded || CanCoyoteJump() || CanWallJump();
+        return IsGrounded || CanCoyoteJump();
     }
 
     private bool CanWallJump() {
-        return IsTouchingWall && rigidBody.linearVelocityY <= 0;
+        return IsTouchingWall && rigidBody.linearVelocityY <= 0 && !IsGrounded;
     }
 
     private bool CanCoyoteJump() {
@@ -103,15 +99,21 @@ public class PlayerMovement : CharacterCore, IPersistentData {
 
     private void HandleJumpInput() {
 
-        if (input.Jump && CanJump()) {
-            Jump();
+        if (input.Jump && !input.JumpConsumed) {
+            input.JumpConsumed = true;
+            if (CanJump()) {
+                print("jump input consumed on jump");
+                Jump();
+            }
+            else if (CanWallJump()) {
+                print("jump input consumed on wall jump");
+                WallJump();
+            }
         }
 
     }
 
-    private void Jump() {
-        rigidBody.linearVelocityY = movementParams.JumpSpeed;
-    }
+
 
     #endregion
 

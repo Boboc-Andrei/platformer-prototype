@@ -35,11 +35,12 @@ public class InputManager : CharacterController {
 
     private void OnJumpActionStarted(InputAction.CallbackContext obj) {
         Jump = true;
+        JumpConsumed = false;
         jumpBufferCounter = JumpBufferTime;
     }
 
     private void OnJumpActionCanceled(InputAction.CallbackContext obj) {
-        StartCoroutine((EndJumpEarly()) );
+        StartCoroutine((EndJumpEarly()));
     }
 
     private IEnumerator EndJumpEarly() {

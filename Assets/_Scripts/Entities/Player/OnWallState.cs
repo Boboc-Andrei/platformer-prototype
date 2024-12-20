@@ -29,13 +29,11 @@ internal class OnWallState : State {
                 SetSubstate(wallSlideState);
             }
         }
-
-        if(character.input.Jump) {
-            IsStateComplete = true;
-        }
     }
 
+
     public override void Exit() {
+        print("exiting on wall state");
         character.GravityOverride = false;
         character.DisableHorizontalFacing = false;
     }

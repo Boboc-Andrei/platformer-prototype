@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallGrabState: {fileID: 7559390844850899400}
   wallSlideState: {fileID: 1520534918221820982}
+  wallJumpState: {fileID: 1692964278362953681}
   animationClip: {fileID: 7400000, guid: de55dee4815ba9445a4f53ae189be4e1, type: 2}
 --- !u!1 &1226392021595993554
 GameObject:

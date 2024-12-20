@@ -23,6 +23,7 @@ public class WallJumpState : JumpState {
 
     public override void Exit() {
         base.Exit();
+        character.IsWallJumping = false;
         character.DisableHorizontalMovement = false;
     }
 }

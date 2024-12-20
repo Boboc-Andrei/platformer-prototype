@@ -14,7 +14,7 @@ public class AirborneState : State {
         character.animator.Play(animation.name);
 
         if (character.input.Jump) {
-            if (character.IsTouchingWall)
+            if (character.IsWallJumping)
                 SetSubstate(wallJumpState);
             else
                 SetSubstate(jumpState);
