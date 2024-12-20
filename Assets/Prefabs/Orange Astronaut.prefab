@@ -1000,3 +1000,5 @@ MonoBehaviour:
   RightLedgeGrab: {fileID: 2285047210524702216}
   MovementParams: {fileID: 11400000, guid: c59c67c9f282600468ee230ef55a3c8c, type: 2}
   Input: {fileID: 6330670658156457724}
+  _idleState: {fileID: 11400000, guid: 73cb7482f61a53c449aa5dc99a2f3d68, type: 2}
+  _walkState: {fileID: 11400000, guid: 623d89b5422234e438e894f763410b00, type: 2}

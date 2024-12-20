@@ -4,9 +4,9 @@ public class StateMachine<T> {
     public BaseState<T> CurrentState;
     public void Set(BaseState<T> newState, bool forceReset = false) {
         if (CurrentState != newState || forceReset) {
-            CurrentState?.ExitBranch();
+            CurrentState?.OnExit();
             CurrentState = newState;
-            CurrentState.Initialise(this);
+            CurrentState.Initialize();
             CurrentState.Enter();
         }
     }

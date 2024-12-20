@@ -12,15 +12,17 @@ public class Character : MonoBehaviour {
     public LedgeGrab RightLedgeGrab;
     public CharacterMovementParameters MovementParams;
     public InputManager Input;
+    public StateMachine<Character> StateMachine = new StateMachine<Character>();
 
     // BLACKBOARD INFO
     public bool ApplyNormalGravityRules { get; set; } = true;
     public bool ApplyWalkingSpeedLimit { get; set; } = true;
-    public bool DisableHorizontalMovement { get; set; }
+    public bool DisableHorizontalMovement { get; set; } = false;
     public bool IsGrounded => GroundCheck.IsTouching;
     public float TimeSinceGrounded => GroundCheck.TimeSinceTouched;
     public int IsTouchingWall => LeftWallCheck.IsTouching ? -1 : RightWallCheck.IsTouching ? 1 : 0;
     public bool IsJumping { get; set; }
+    public float HorizontalDrag { get; set; } = 0;
 
 
     #region Movement Methods
@@ -46,12 +48,18 @@ public class Character : MonoBehaviour {
         if (Input.HorizontalMovement != 0) {
             LookTowards(Input.HorizontalMovement);
         }
-        else {
+        else if(Body.linearVelocityX > .1f) {
             LookTowards(Body.linearVelocityX);
         }
     }
     public void LimitWalkingSpeed() {
         Body.linearVelocityX = Mathf.Clamp(Body.linearVelocityX, -MovementParams.HorizontalTopSpeed, MovementParams.HorizontalTopSpeed);
+    }
+
+    public void ApplyHorizontalDrag() {
+        if(Input.HorizontalMovement == 0) {
+            Body.linearVelocityX *= MovementParams.GroundHorizontalDrag;
+        }
     }
     #endregion
 
