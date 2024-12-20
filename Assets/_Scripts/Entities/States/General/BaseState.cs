@@ -1,17 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-internal class BaseState <T> : IState{
+using UnityEngine;
+
+public class BaseState <T> : IState{
     protected T blackBoard;
+    protected StateMachine<T> machine;
+    public BaseState<T> CurrentSubState => machine.currentState;
+    private float startTime;
+    public float ElapsedTime => Time.time - startTime;
 
-    void IState.Do() { }
+    public virtual void SetBlackBoard(T _blackBoard) {
+        blackBoard = _blackBoard;
+    }
 
-    void IState.Enter() { }
+    public virtual void Initialise() {
+        startTime = Time.time;
+    }
 
-    void IState.Exit() { }
+    public virtual void Do() { }
+    public virtual void DoBranch() {
+        Do();
+        CurrentSubState?.Do();
+    }
 
-    void IState.FixedDo() { }
+    public virtual void Enter() { }
+
+    public virtual void Exit() { }
+    public virtual void ExitBranch() {
+        CurrentSubState?.ExitBranch();
+        Exit();
+    }
+
+    public virtual void FixedDo() { }
+    public virtual void FixedDoBranch() {
+        DoBranch();
+        CurrentSubState?.DoBranch();
+    }
 }
