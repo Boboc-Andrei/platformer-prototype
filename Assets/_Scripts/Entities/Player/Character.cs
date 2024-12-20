@@ -61,6 +61,12 @@ public class Character : MonoBehaviour {
             Body.linearVelocityX *= MovementParams.GroundHorizontalDrag;
         }
     }
+
+    public void RoundHorizontalVelocityToZero() {
+        if(Mathf.Abs(Body.linearVelocityX) < .1f) {
+            Body.linearVelocityX = 0;
+        }
+    }
     #endregion
 
     #region Airborne methods

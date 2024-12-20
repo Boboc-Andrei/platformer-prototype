@@ -51,6 +51,7 @@ public class PlayerMovement : Character {
         LimitWalkingSpeed();
         ApplyHorizontalDrag();
         FaceMovementDirection();
+        RoundHorizontalVelocityToZero();
 
         StateMachine.CurrentState.OnFixedUpdate();
     }
