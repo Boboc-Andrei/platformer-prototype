@@ -14,7 +14,7 @@ public class AirborneState : State {
         character.animator.Play(animation.name);
 
         if (character.input.Jump) {
-            if (character.IsTouchingWall && character.rigidBody.linearVelocityY <= 0)
+            if (character.IsTouchingWall)
                 SetSubstate(wallJumpState);
             else
                 SetSubstate(jumpState);
@@ -22,7 +22,6 @@ public class AirborneState : State {
         else {
             SetSubstate(fallingState);
         }
-
 
     }
     public override void Do() {

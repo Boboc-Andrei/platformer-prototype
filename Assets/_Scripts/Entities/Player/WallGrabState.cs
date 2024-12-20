@@ -3,6 +3,7 @@
     public float hangTime;
     
     public override void Enter() {
+        print("entered wall grab state");
     }
 
     public override void Do() {
@@ -11,5 +12,10 @@
         if(RunningTime > hangTime) {
             IsStateComplete = true;
         }
+        print(IsStateComplete);
+    }
+
+    public override void Exit() {
+        print("exiting wall grab state");
     }
 }

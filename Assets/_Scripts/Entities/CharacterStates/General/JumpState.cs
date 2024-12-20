@@ -4,7 +4,7 @@ public class JumpState : State{
 
 
     public override void Enter() {
-
+        character.ApplyJumpingGravity();
     }
 
     public override void Do() {
@@ -22,6 +22,6 @@ public class JumpState : State{
     }
 
     public override void Exit() {
-        
+        character.IsJumping = false;
     }
 }

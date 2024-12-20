@@ -10,6 +10,11 @@ public class GroundedState : State {
     }
 
     public override void Do() {
+        character.RoundHorizontalVelocityToZero();
+        SelectSubstate();
+    }
+
+    private void SelectSubstate() {
         if (!character.IsGrounded) {
             IsStateComplete = true;
         }
@@ -19,10 +24,7 @@ public class GroundedState : State {
         else {
             SetSubstate(idleState);
         }
-
-        character.RoundHorizontalVelocityToZero();
     }
-
 
     public override void FixedDo() {
 

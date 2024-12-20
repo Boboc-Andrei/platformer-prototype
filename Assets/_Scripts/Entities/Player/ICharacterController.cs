@@ -13,4 +13,5 @@ public abstract class CharacterController : MonoBehaviour, ICharacterController 
     public float HorizontalMovement { get; set; }
     public float VerticalMovement { get; set; }
     public bool Grab { get; set; }
+    public bool JumpConsumed { get; set; }
 }
