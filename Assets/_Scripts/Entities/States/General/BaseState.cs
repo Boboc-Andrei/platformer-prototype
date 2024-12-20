@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BaseState <T> : IState{
     protected T blackBoard;
-    protected StateMachine<T> machine;
-    public BaseState<T> CurrentSubState => machine.currentState;
+    public StateMachine<T> machine;
+    public BaseState<T> CurrentSubState => machine.CurrentState;
     private float startTime;
     public float ElapsedTime => Time.time - startTime;
 
