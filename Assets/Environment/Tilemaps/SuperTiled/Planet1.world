@@ -4,7 +4,7 @@
             "fileName": "Level1.tmx",
             "height": 320,
             "width": 480,
-            "x": 0,
+            "x": -8,
             "y": 0
         },
         {
@@ -18,14 +18,14 @@
             "fileName": "Level3.tmx",
             "height": 240,
             "width": 480,
-            "x": 816,
+            "x": 808,
             "y": -152
         },
         {
             "fileName": "Level4.tmx",
             "height": 480,
             "width": 320,
-            "x": 1304,
+            "x": 1296,
             "y": -152
         }
     ],

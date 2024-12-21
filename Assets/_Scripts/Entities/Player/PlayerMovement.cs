@@ -25,10 +25,6 @@ public class PlayerMovement : Character {
     }
 
     private void Update() {
-
-        if (!DisableHorizontalMovement) {
-            MoveWithInput();
-        }
         if (ApplyWalkingSpeedLimit) {
             LimitWalkingSpeed();
         }
@@ -48,12 +44,16 @@ public class PlayerMovement : Character {
     }
 
     private void FixedUpdate() {
+        if (!DisableHorizontalMovement) {
+            MoveWithInput();
+        }
         LimitWalkingSpeed();
         ApplyHorizontalDrag();
         FaceMovementDirection();
         RoundHorizontalVelocityToZero();
 
         StateMachine.CurrentState.OnFixedUpdate();
+
     }
 
     private void MoveWithInput() {
