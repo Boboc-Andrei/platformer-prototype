@@ -15,7 +15,10 @@ public abstract class BaseState <T> : ScriptableObject, IState {
     public virtual void SetBlackBoard(T _subject) {
         Subject = _subject;
         IsComplete = false;
+        SetSubsatesBlackBoard();
     }
+
+    public virtual void SetSubsatesBlackBoard() { }
 
     public virtual void Initialize() {
         startTime = Time.time;

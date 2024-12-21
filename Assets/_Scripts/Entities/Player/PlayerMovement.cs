@@ -6,20 +6,13 @@ using UnityEngine;
 
 public class PlayerMovement : Character {
 
-    [SerializeField] private IdleState _idleState;
-    [SerializeField] private WalkingState _walkState;
-
-    private IdleState IdleState;
-    private WalkingState WalkingState;
+    [SerializeField] private GroundedState _groundedStateSO;
+    private GroundedState GroundedState;
 
     private void Start() {
-        IdleState = Instantiate(_idleState);
-        IdleState.SetBlackBoard(this);
-
-        WalkingState = Instantiate(_walkState);
-        WalkingState.SetBlackBoard(this);
-
-        StateMachine.Set(IdleState);
+        GroundedState = Instantiate(_groundedStateSO);
+        GroundedState.SetBlackBoard(this);
+        StateMachine.Set(GroundedState);
     }
 
     private void Update() {
@@ -30,15 +23,6 @@ public class PlayerMovement : Character {
         SelectState();
 
         StateMachine.CurrentState.OnUpdate();
-    }
-
-    private void SelectState() {
-        if (Input.HorizontalMovement != 0 && Mathf.Abs(Body.linearVelocityX) > .1f) {
-            StateMachine.Set(WalkingState);
-        }
-        else {
-            StateMachine.Set(IdleState);
-        }
     }
 
     private void FixedUpdate() {
@@ -52,6 +36,10 @@ public class PlayerMovement : Character {
 
         StateMachine.CurrentState.OnFixedUpdate();
 
+    }
+
+    private void SelectState() {
+        StateMachine.Set(GroundedState);
     }
 
     private void MoveWithInput() {
