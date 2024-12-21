@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="8" tileheight="8" infinite="0" nextlayerid="22" nextobjectid="3750">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="8" tileheight="8" infinite="0" nextlayerid="23" nextobjectid="3820">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <tileset firstgid="49" name="AutoMap Rules" tilewidth="32" tileheight="32" tilecount="5" columns="5" tilerendersize="grid" fillmode="preserve-aspect-fit">
   <image source="qrc:/automap-tiles.svg" width="160" height="32"/>
@@ -42,13 +42,13 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,70,70,70,70,70,70,70,70,70,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,70,70,70,70,70,70,70,70,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,67,67,67,67,67,67,67,67,67,67,67,67,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,67,67,67,67,67,67,67,67,67,67,67,67,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,
 0,0,0,0,0,0,0,0,0,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,0,0,0,0,0,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,
 67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,0,0,0,0,0,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,67,
@@ -171,13 +171,24 @@
 </data>
  </layer>
  <objectgroup id="21" name="Ledges">
-  <object id="3742" template="LedgeHitbox.tx" x="321" y="106"/>
-  <object id="3743" template="LedgeHitbox.tx" x="65" y="242"/>
-  <object id="3744" template="LedgeHitbox.tx" x="153" y="242"/>
-  <object id="3745" template="LedgeHitbox.tx" x="249" y="242"/>
-  <object id="3746" template="LedgeHitbox.tx" x="279" y="106"/>
-  <object id="3747" template="LedgeHitbox.tx" x="95" y="242"/>
-  <object id="3748" template="LedgeHitbox.tx" x="183" y="242"/>
-  <object id="3749" template="LedgeHitbox.tx" x="279" y="242"/>
+  <object id="3812" template="LedgeHitbox.tx" x="321" y="106"/>
+  <object id="3813" template="LedgeHitbox.tx" x="65" y="242"/>
+  <object id="3814" template="LedgeHitbox.tx" x="153" y="242"/>
+  <object id="3815" template="LedgeHitbox.tx" x="249" y="242"/>
+  <object id="3816" template="LedgeHitbox.tx" x="279" y="106"/>
+  <object id="3817" template="LedgeHitbox.tx" x="95" y="242"/>
+  <object id="3818" template="LedgeHitbox.tx" x="183" y="242"/>
+  <object id="3819" template="LedgeHitbox.tx" x="279" y="242"/>
+ </objectgroup>
+ <objectgroup id="22" name="LevelTransitions">
+  <object id="3751" template="LevelTransition.tx" x="4" y="104">
+   <properties>
+    <property name="FromGateID" value="L1"/>
+    <property name="FromScene" value="Level1"/>
+    <property name="ToGateID" value="R1"/>
+    <property name="ToScene" value="Level2"/>
+   </properties>
+  </object>
+  <object id="3810" template="LevelTransition.tx" type="LevelTransition" x="476" y="104"/>
  </objectgroup>
 </map>

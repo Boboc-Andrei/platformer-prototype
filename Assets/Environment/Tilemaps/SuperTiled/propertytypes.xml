@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
- <objecttype name="LedgeGrab" color="#a0a0a4">
+ <objecttype name="LedgeGrab" color="#a49b38">
+  <property name="unity:isTrigger" type="bool" default="true"/>
+ </objecttype>
+ <objecttype name="LevelTransition" color="#a0a0a4">
+  <property name="FromGateID" type="string" default=""/>
+  <property name="FromScene" type="string" default=""/>
+  <property name="ToGateID" type="string" default=""/>
+  <property name="ToScene" type="string" default=""/>
   <property name="unity:isTrigger" type="bool" default="true"/>
  </objecttype>
 </objecttypes>

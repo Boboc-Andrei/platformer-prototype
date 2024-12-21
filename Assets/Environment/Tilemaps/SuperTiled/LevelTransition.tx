@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <object width="8" height="48"/>
+ <object name="LevelTransition" type="LevelTransition">
+  <properties>
+   <property name="FromGateID" value="R1"/>
+   <property name="FromScene" value="Level1"/>
+   <property name="ToGateID" value="L1"/>
+   <property name="ToScene" value="Level2"/>
+  </properties>
+  <point/>
+ </object>
 </template>

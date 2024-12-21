@@ -210,8 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd6d22cb91970f4db753a87ca98146d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Screen1
-  id: 0
+  ToScene: 
+  ToGateID: 
+  FromScene: 
+  FromGateID: 
   isActive: 1
 --- !u!1001 &408883926
 PrefabInstance:
@@ -506,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &925600509
 Transform:
   m_ObjectHideFlags: 0
@@ -667,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a0b8b42e0c1994c99ddc27ee8417b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1360763218430851335, guid: c10607d07f68f044daf49717d6303891, type: 3}
+  playerPrefab: {fileID: 1979088336585058571, guid: ea2ab2903ebe2a543ae5b49073529700, type: 3}
   cameraPrefab: {fileID: 8945707868754863142, guid: 5b1e0c31004bf6e44923e47ac43626d7, type: 3}
   Player: {fileID: 0}
   currentCamera: {fileID: 0}

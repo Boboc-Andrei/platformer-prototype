@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransition : MonoBehaviour
 {
-    public string nextScene;
-    public int id;
+    public string ToScene;
+    public string ToGateID;
+    public string FromScene;
+    public string FromGateID;
+
     public bool isActive = true;
 
 
@@ -12,7 +15,7 @@ public class LevelTransition : MonoBehaviour
         if(!isActive) {
             return;
         }
-        GameManager.Instance.LevelTransition(id);
+        GameManager.Instance.LevelTransition(FromGateID);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {

@@ -48,38 +48,45 @@
             "scaleInEditor": 8
         },
         "Level1.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                21,
+                22
+            ],
+            "scale": 4,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 240,
-                "y": 159.5
+                "x": 488.375,
+                "y": 129.375
             }
         },
         "Level1.tmx#AutoMap Rules": {
             "scaleInDock": 1
         },
         "Level2.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 4,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 950,
-                "y": 135.33333333333331
+                "x": 0.375,
+                "y": 209.375
             }
         },
         "Level3.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 142,
-                "y": 75.33333333333331
+                "x": -322.99999999999994,
+                "y": 285.66666666666663
             }
         },
         "Level4.tmx": {
-            "scale": 4,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -542.875,
-                "y": 181.125
+                "x": -904.6666666666666,
+                "y": 287.33333333333326
             }
         },
         "automap-tiles.tmx": {
@@ -135,6 +142,7 @@
         "automap-tiles.tmx"
     ],
     "resizeMap.removeObjects": true,
+    "textEdit.monospace": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

@@ -13,8 +13,6 @@ public class PlayerMovement : Character {
     private WalkingState WalkingState;
 
     private void Start() {
-        print(_idleState == null);
-
         IdleState = Instantiate(_idleState);
         IdleState.SetBlackBoard(this);
 

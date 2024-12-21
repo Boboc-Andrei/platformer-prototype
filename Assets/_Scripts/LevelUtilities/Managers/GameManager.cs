@@ -6,24 +6,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    #region Singleton Boilerplate
     private static GameManager _instance;
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private PlayerMovement playerPrefab;
-    [SerializeField] private CinemachineCamera cameraPrefab;
-
-
-    public PlayerMovement Player;
-    public CinemachineCamera currentCamera;
-    public bool spawnPlayerOnStart = true;
-    private Vector3 playerSpawnPosition;
-    public Dictionary<int, LevelTransition> levelTransitions;
-
-    private int spawnGateId = -1;
-    private Vector2 spawnPositionOffset;
-    private Vector2 cameraPositionOffset;
-
-    private void Awake() {
+    private void SingletonInitialization() {
         if (_instance == null) {
             _instance = this;
             Instance = this;
@@ -32,8 +19,28 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+    #endregion
 
-        if (spawnGateId > -1) {
+    [SerializeField] private PlayerMovement playerPrefab;
+    [SerializeField] private CinemachineCamera cameraPrefab;
+
+    public PlayerMovement Player;
+    public CinemachineCamera currentCamera;
+
+    public bool spawnPlayerOnStart = true;
+    private Vector3 playerSpawnPosition;
+
+    public Dictionary<string, LevelTransition> levelTransitions;
+
+    private string spawnGateId = "";
+    private Vector2 spawnPositionOffset;
+    private Vector2 cameraPositionOffset;
+
+    private void Awake() {
+        SingletonInitialization();
+
+        if (spawnGateId != "") {
 
             playerSpawnPosition = (Vector2)levelTransitions[spawnGateId].transform.position + spawnPositionOffset;
         }
@@ -72,11 +79,16 @@ public class GameManager : MonoBehaviour {
     private void OnSceneLoaded(Scene nextScene, LoadSceneMode sceneMode) {
         LevelTransitionsSetup();
 
-        if (spawnGateId == -1) {
+        if (spawnGateId == "") {
             return;
         }
 
+        print($"on scene loaded player is at {Player.transform.position}");
+
         Player.transform.position = (Vector2)levelTransitions[spawnGateId].transform.position + spawnPositionOffset;
+
+        print($"on scene loaded player teleported at {Player.transform.position}");
+
         levelTransitions[spawnGateId].isActive = false;
 
         CameraSetup();
@@ -87,10 +99,10 @@ public class GameManager : MonoBehaviour {
     }
 
     private void LevelTransitionsSetup() {
-        levelTransitions = new Dictionary<int, LevelTransition>();
+        levelTransitions = new Dictionary<string, LevelTransition>();
 
         foreach (var levelTransition in FindObjectsByType<LevelTransition>(FindObjectsSortMode.None)) {
-            levelTransitions[levelTransition.id] = levelTransition;
+            levelTransitions[levelTransition.FromGateID] = levelTransition;
         }
     }
 
@@ -106,12 +118,14 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    public void LevelTransition(int transitionId) {
-        spawnGateId = transitionId;
-        LevelTransition levelTransition = levelTransitions[transitionId];
+    public void LevelTransition(string fromGateID) {
+
+        spawnGateId = levelTransitions[fromGateID].ToGateID;
+        LevelTransition levelTransition = levelTransitions[fromGateID];
         spawnPositionOffset = Player.transform.position - levelTransition.transform.position;
         cameraPositionOffset = currentCamera.transform.position - Player.transform.position;
-        SceneManager.LoadScene(levelTransition.nextScene);
+        print($"loading scene {levelTransition.ToScene}");
+        SceneManager.LoadScene(levelTransition.ToScene);
     }
 
 

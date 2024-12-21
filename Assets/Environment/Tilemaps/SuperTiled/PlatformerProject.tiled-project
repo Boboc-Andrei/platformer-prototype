@@ -34,6 +34,51 @@
                 "wangset",
                 "project"
             ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "FromGateID",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "FromScene",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "ToGateID",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "ToScene",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "unity:isTrigger",
+                    "type": "bool",
+                    "value": true
+                }
+            ],
+            "name": "LevelTransition",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
         }
     ]
 }
