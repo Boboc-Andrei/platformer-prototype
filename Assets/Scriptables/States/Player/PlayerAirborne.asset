@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0099ff42327f4488c688cf26197581, type: 3}
+  m_Name: PlayerAirborne
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 91e004e26a928524089c45fd4d814603, type: 2}
+  _jumpStateSO: {fileID: 11400000, guid: d61eb219502ced843ac496757950408d, type: 2}
+  _fallingStateSO: {fileID: 11400000, guid: eec9948053e1f0a449d78d2e40ad51b2, type: 2}
+  _wallJumpStateSO: {fileID: 11400000, guid: 5e594bed569f56e439b4ff93cd3a938e, type: 2}

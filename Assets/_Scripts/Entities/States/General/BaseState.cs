@@ -14,32 +14,31 @@ public abstract class BaseState <T> : ScriptableObject, IState {
 
     public virtual void SetBlackBoard(T _subject) {
         Subject = _subject;
-        IsComplete = false;
-        SetSubsatesBlackBoard();
+        SetupSubStates();
     }
 
-    public virtual void SetSubsatesBlackBoard() { }
+    public virtual void SetupSubStates() { }
 
     public virtual void Initialize() {
         startTime = Time.time;
-    }
-
-    public virtual void Do() { }
-    public virtual void OnUpdate() {
-        Do();
-        CurrentSubState?.OnUpdate();
+        IsComplete = false;
     }
 
     public virtual void Enter() { }
-
-    public virtual void Exit() { }
-    public virtual void OnExit() {
-        CurrentSubState?.OnExit();
-        Exit();
-    }
+    public virtual void Do() { }
     public virtual void FixedDo() { }
-    public virtual void OnFixedUpdate() {
+    public virtual void Exit() { }
+
+    public void OnUpdate() {
+        Do();
+        CurrentSubState?.OnUpdate();
+    }
+    public void OnFixedUpdate() {
         FixedDo();
         CurrentSubState?.OnFixedUpdate();
+    }
+    public void OnExit() {
+        CurrentSubState?.OnExit();
+        Exit();
     }
 }

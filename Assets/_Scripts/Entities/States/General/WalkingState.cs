@@ -11,7 +11,7 @@ public class WalkingState : CharacterState {
     }
 
     public override void Do() {
-        if (Character.Input.HorizontalMovement == 0 && Character.Body.linearVelocityX < 0.1f) {
+        if (Character.Input.HorizontalMovement == 0 && Mathf.Abs(Character.Body.linearVelocityX) < 0.1f) {
             IsComplete = true;
         }
 
@@ -20,5 +20,9 @@ public class WalkingState : CharacterState {
 
     private void ModulateAnimatorSpeed() {
         Character.Animator.speed = Helpers.Map(Mathf.Abs(Character.Body.linearVelocityX), 0, Character.MovementParams.HorizontalTopSpeed, 0, 0.999f, true);
+    }
+
+    public override string ToString() {
+        return "Walking";
     }
 }

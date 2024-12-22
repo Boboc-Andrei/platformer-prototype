@@ -1,17 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Character : MonoBehaviour {
     [Header("Core Components")]
     public Rigidbody2D Body;
     public SpriteRenderer Sprite;
     public Animator Animator;
+    
+    [Header("Sensors")]
     public TerrainSensor GroundCheck;
     public TerrainSensor LeftWallCheck;
     public TerrainSensor RightWallCheck;
-    public LedgeGrab LeftLedgeGrab;
-    public LedgeGrab RightLedgeGrab;
+
+    [Header("Movement")]
     public CharacterMovementParameters MovementParams;
     public InputManager Input;
+
+    [Header("Ledge grabbing")]
+    public LedgeGrab LeftLedgeGrab;
+    public LedgeGrab RightLedgeGrab;
+
     public StateMachine<Character> StateMachine = new StateMachine<Character>();
 
     // BLACKBOARD INFO
@@ -22,6 +31,8 @@ public class Character : MonoBehaviour {
     public float TimeSinceGrounded => GroundCheck.TimeSinceTouched;
     public int IsTouchingWall => LeftWallCheck.IsTouching ? -1 : RightWallCheck.IsTouching ? 1 : 0;
     public bool IsJumping { get; set; }
+    public bool IsWallJumping { get; set; }
+    public int WallJumpDirection { get; set; }
     public float HorizontalDrag { get; set; } = 0;
 
 
@@ -48,7 +59,7 @@ public class Character : MonoBehaviour {
         if (Input.HorizontalMovement != 0) {
             LookTowards(Input.HorizontalMovement);
         }
-        else if(Body.linearVelocityX > .1f) {
+        else if (Body.linearVelocityX > .1f) {
             LookTowards(Body.linearVelocityX);
         }
     }
@@ -57,13 +68,13 @@ public class Character : MonoBehaviour {
     }
 
     public void ApplyHorizontalDrag() {
-        if(Input.HorizontalMovement == 0) {
-            Body.linearVelocityX *= MovementParams.GroundHorizontalDrag;
+        if (Input.HorizontalMovement == 0) {
+            Body.linearVelocityX *= HorizontalDrag;
         }
     }
 
     public void RoundHorizontalVelocityToZero() {
-        if(Mathf.Abs(Body.linearVelocityX) < .1f) {
+        if (Mathf.Abs(Body.linearVelocityX) < .1f) {
             Body.linearVelocityX = 0;
         }
     }
@@ -96,17 +107,37 @@ public class Character : MonoBehaviour {
     }
 
     public virtual bool CanJump() {
-        return IsGrounded && !IsJumping;
+        return IsGrounded || CanCoyoteJump() && !IsJumping && Body.linearVelocityY <= 0;
+    }
+
+    public virtual bool CanCoyoteJump() {
+        return TimeSinceGrounded <= MovementParams.CoyoteTime;
     }
 
     public virtual void WallJump() {
         IsJumping = true;
+        IsWallJumping = true;
+        WallJumpDirection = -IsTouchingWall;
         ApplyVelocityY(MovementParams.JumpSpeed);
-        ApplyVelocityX(MovementParams.HorizontalTopSpeed * -IsTouchingWall);
+        ApplyVelocityX(MovementParams.HorizontalTopSpeed * WallJumpDirection);
     }
 
     public virtual bool CanWallJump() {
         return IsTouchingWall != 0 && !IsGrounded && !IsJumping;
     }
     #endregion
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos() {
+        DrawStateGizmo();
+    }
+
+    private void DrawStateGizmo() {
+        if (Application.isPlaying && StateMachine.CurrentState != null) {
+            List<string> states = StateMachine.GetActiveStateBranch();
+            UnityEditor.Handles.Label(transform.position + Vector3.up * 1, "State: " + string.Join(" > ", states));
+        }
+    }
+#endif
 }

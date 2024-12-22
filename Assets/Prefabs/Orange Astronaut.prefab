@@ -1002,6 +1002,7 @@ MonoBehaviour:
   MovementParams: {fileID: 11400000, guid: c59c67c9f282600468ee230ef55a3c8c, type: 2}
   Input: {fileID: 6330670658156457724}
   _groundedStateSO: {fileID: 11400000, guid: 962dfe5772551e44abc9b103a1493466, type: 2}
+  _airborneStateSO: {fileID: 11400000, guid: 936445a1f197dca45b67710a9490d460, type: 2}
 --- !u!114 &933989719095093450
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level2.tmx",
+    "activeFile": "Level3.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -49,14 +49,13 @@
         },
         "Level1.tmx": {
             "expandedObjectLayers": [
-                21,
                 22
             ],
             "scale": 4,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 488.375,
-                "y": 129.375
+                "x": 110.625,
+                "y": 103.875
             }
         },
         "Level1.tmx#AutoMap Rules": {
@@ -67,26 +66,26 @@
                 8
             ],
             "scale": 4,
-            "selectedLayer": 3,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 0.375,
-                "y": 209.375
+                "x": 160,
+                "y": 120.125
             }
         },
         "Level3.tmx": {
             "scale": 1.5,
-            "selectedLayer": -1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": -322.99999999999994,
-                "y": 285.66666666666663
+                "x": 240,
+                "y": 119.66666666666666
             }
         },
         "Level4.tmx": {
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -904.6666666666666,
-                "y": 287.33333333333326
+                "x": -1124.6666666666665,
+                "y": 376.6666666666667
             }
         },
         "automap-tiles.tmx": {
@@ -121,20 +120,18 @@
         "Level1.tmx",
         "Level2.tmx",
         "Level3.tmx",
-        "Level4.tmx",
-        "8x8_simple_platform_upper.tsx",
-        "8x8_placeholder13_full.tsx"
+        "Level4.tmx"
     ],
     "project": "PlatformerProject.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "8x8_placeholder13_full.tsx",
-        "8x8_simple_platform_upper.tsx",
         "AutomapRules.tmx",
         "Level1.tmx",
+        "Level2.tmx",
         "Level4.tmx",
         "Level3.tmx",
-        "Level2.tmx",
+        "8x8_placeholder13_full.tsx",
+        "8x8_simple_platform_upper.tsx",
         "8x8_simple_platform.tsx",
         "8x8_grassy_dirt.tsx",
         ":/automap-tiles.tsx",

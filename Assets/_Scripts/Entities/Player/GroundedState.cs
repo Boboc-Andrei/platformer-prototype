@@ -13,12 +13,17 @@ internal class GroundedState : CharacterState {
 
     private IdleState IdleState;
     private WalkingState WalkingState;
-    public override void SetSubsatesBlackBoard() {
+    public override void SetupSubStates() {
         IdleState = Instantiate(_idleStateSO);
         IdleState.SetBlackBoard(Character);
 
         WalkingState = Instantiate(_walkStateSO);
         WalkingState.SetBlackBoard(Character);
+    }
+
+    public override void Enter() {
+        Character.HorizontalDrag = Character.MovementParams.GroundHorizontalDrag;
+        machine.Set(IdleState, true);
     }
 
     public override void Do() {
@@ -29,11 +34,17 @@ internal class GroundedState : CharacterState {
     }
 
     private void SelectSubState() {
-        if (Character.Input.HorizontalMovement != 0 && Mathf.Abs(Character.Body.linearVelocityX) > .1f) {
-            machine.Set(WalkingState);
+        if (machine.CurrentState.IsComplete) {
+            if (Character.Input.HorizontalMovement != 0 && Mathf.Abs(Character.Body.linearVelocityX) > .1f) {
+                machine.Set(WalkingState);
+            }
+            else {
+                machine.Set(IdleState);
+            }
         }
-        else {
-            machine.Set(IdleState);
-        }
+    }
+
+    public override string ToString() {
+        return "Grounded";
     }
 }

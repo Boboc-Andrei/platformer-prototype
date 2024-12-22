@@ -15,8 +15,12 @@ public class IdleState : CharacterState {
     }
 
     public override void Do() {
-        if (Character.Input.HorizontalMovement != 0 || !Character.IsGrounded) {
+        if (Character.Input.HorizontalMovement != 0 || Character.IsJumping) {
             IsComplete = true;
         }
+    }
+
+    public override string ToString() {
+        return "Idle";
     }
 }

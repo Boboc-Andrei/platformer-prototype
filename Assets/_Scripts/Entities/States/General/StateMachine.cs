@@ -23,6 +23,5 @@ public class StateMachine<T> {
             list.Add(CurrentState.ToString());
             return CurrentState.machine.GetActiveStateBranch(list);
         }
-
     }
 }
