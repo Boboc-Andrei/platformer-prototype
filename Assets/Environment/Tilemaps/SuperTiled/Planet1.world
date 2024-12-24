@@ -19,14 +19,14 @@
             "height": 240,
             "width": 480,
             "x": 808,
-            "y": -152
+            "y": -80
         },
         {
             "fileName": "Level4.tmx",
             "height": 480,
             "width": 320,
             "x": 1296,
-            "y": -152
+            "y": -64
         }
     ],
     "onlyShowAdjacentMaps": false,

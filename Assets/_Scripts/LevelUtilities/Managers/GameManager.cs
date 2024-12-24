@@ -83,11 +83,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        print($"on scene loaded player is at {Player.transform.position}");
-
         Player.transform.position = (Vector2)levelTransitions[spawnGateId].transform.position + spawnPositionOffset;
-
-        print($"on scene loaded player teleported at {Player.transform.position}");
 
         levelTransitions[spawnGateId].isActive = false;
 
@@ -124,7 +120,6 @@ public class GameManager : MonoBehaviour {
         LevelTransition levelTransition = levelTransitions[fromGateID];
         spawnPositionOffset = Player.transform.position - levelTransition.transform.position;
         cameraPositionOffset = currentCamera.transform.position - Player.transform.position;
-        print($"loading scene {levelTransition.ToScene}");
         SceneManager.LoadScene(levelTransition.ToScene);
     }
 

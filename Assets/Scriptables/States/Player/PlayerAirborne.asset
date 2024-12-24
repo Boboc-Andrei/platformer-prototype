@@ -16,3 +16,4 @@ MonoBehaviour:
   _jumpStateSO: {fileID: 11400000, guid: d61eb219502ced843ac496757950408d, type: 2}
   _fallingStateSO: {fileID: 11400000, guid: eec9948053e1f0a449d78d2e40ad51b2, type: 2}
   _wallJumpStateSO: {fileID: 11400000, guid: 5e594bed569f56e439b4ff93cd3a938e, type: 2}
+  _onWallStateSO: {fileID: 11400000, guid: 869978b990a585746a3fe602e7d19029, type: 2}

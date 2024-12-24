@@ -5,7 +5,8 @@ using UnityEngine;
 internal class FallingState : CharacterState {
 
     public override void Do() {
-        if(Character.Body.linearVelocityY >= 0) {
+        // TODO: find workaround for exiting falling state without using parameters belonging to other states
+        if(Character.Body.linearVelocityY > 0 || Character.IsGrabbingWall != 0) {
             IsComplete = true;
         }
     }

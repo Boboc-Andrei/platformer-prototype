@@ -997,12 +997,13 @@ MonoBehaviour:
   GroundCheck: {fileID: 1698558524249416225}
   LeftWallCheck: {fileID: 7759825874997172280}
   RightWallCheck: {fileID: 4410890167452217328}
-  LeftLedgeGrab: {fileID: 2588199513301956749}
-  RightLedgeGrab: {fileID: 2285047210524702216}
   MovementParams: {fileID: 11400000, guid: c59c67c9f282600468ee230ef55a3c8c, type: 2}
   Input: {fileID: 6330670658156457724}
+  LeftLedgeGrab: {fileID: 2588199513301956749}
+  RightLedgeGrab: {fileID: 2285047210524702216}
   _groundedStateSO: {fileID: 11400000, guid: 962dfe5772551e44abc9b103a1493466, type: 2}
   _airborneStateSO: {fileID: 11400000, guid: 936445a1f197dca45b67710a9490d460, type: 2}
+  _wallStateSO: {fileID: 11400000, guid: 869978b990a585746a3fe602e7d19029, type: 2}
 --- !u!114 &933989719095093450
 MonoBehaviour:
   m_ObjectHideFlags: 0

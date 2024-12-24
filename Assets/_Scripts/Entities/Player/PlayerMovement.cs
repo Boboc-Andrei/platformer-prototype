@@ -14,12 +14,18 @@ public class PlayerMovement : Character {
     [SerializeField] private AirborneState _airborneStateSO;
     private AirborneState AirborneState;
 
+    [SerializeField] private OnWallState _wallStateSO;
+    private OnWallState OnWallState;
+
     private void Start() {
         GroundedState = Instantiate(_groundedStateSO);
         GroundedState.SetBlackBoard(this);
 
         AirborneState = Instantiate(_airborneStateSO);
         AirborneState.SetBlackBoard(this);
+
+        OnWallState = Instantiate(_wallStateSO);
+        OnWallState.SetBlackBoard(this);
 
         StateMachine.Set(GroundedState);
     }
@@ -30,9 +36,6 @@ public class PlayerMovement : Character {
         }
 
         SelectState();
-
-        //TEMPORARY! MOVE TO JUMP STATE WHEN IMPLEMENTED
-        if (IsGrounded || Body.linearVelocityY <= 0) IsJumping = false;
 
         StateMachine.CurrentState.OnUpdate();
     }
@@ -51,7 +54,6 @@ public class PlayerMovement : Character {
         RoundHorizontalVelocityToZero();
 
         StateMachine.CurrentState.OnFixedUpdate();
-
     }
 
     private void SelectState() {
@@ -61,7 +63,12 @@ public class PlayerMovement : Character {
                 StateMachine.Set(GroundedState);
             }
             else {
-                StateMachine.Set(AirborneState);
+                if (IsGrabbingWall != 0) {
+                    StateMachine.Set(OnWallState, true);
+                }
+                else {
+                    StateMachine.Set(AirborneState);
+                }
             }
         }
     }

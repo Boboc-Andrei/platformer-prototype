@@ -34,6 +34,8 @@ public class Character : MonoBehaviour {
     public bool IsWallJumping { get; set; }
     public int WallJumpDirection { get; set; }
     public float HorizontalDrag { get; set; } = 0;
+    public int IsGrabbingWall => (!IsGrounded && Input.Grab && Body.linearVelocityY <= 0.1f) ? IsTouchingWall : 0;
+    public bool OverrideFacingDirecion { get; set; }
 
 
     #region Movement Methods
@@ -56,6 +58,7 @@ public class Character : MonoBehaviour {
     }
 
     public void FaceMovementDirection() {
+        if (OverrideFacingDirecion) return;
         if (Input.HorizontalMovement != 0) {
             LookTowards(Input.HorizontalMovement);
         }
@@ -123,7 +126,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual bool CanWallJump() {
-        return IsTouchingWall != 0 && !IsGrounded && !IsJumping;
+        return IsTouchingWall != 0 && !IsGrounded && !IsJumping && Body.linearVelocityY < .1f;
     }
     #endregion
 

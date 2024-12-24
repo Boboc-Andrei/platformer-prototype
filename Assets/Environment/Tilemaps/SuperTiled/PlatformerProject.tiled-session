@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level1.tmx",
+    "activeFile": "Level2.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -66,10 +66,10 @@
                 10
             ],
             "scale": 2,
-            "selectedLayer": 3,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": -226.75,
-                "y": 225.25
+                "x": 107.75,
+                "y": 233.25
             }
         },
         "Level3.tmx": {
@@ -126,10 +126,10 @@
     "property.type": "bool",
     "recentFiles": [
         "AutomapRules.tmx",
+        "Level1.tmx",
         "Level4.tmx",
         "Level3.tmx",
         "Level2.tmx",
-        "Level1.tmx",
         "8x8_placeholder13_full.tsx",
         "8x8_simple_platform_upper.tsx",
         "8x8_simple_platform.tsx",

@@ -34,7 +34,7 @@ public class AirborneState : CharacterState {
     }
 
     public override void Do() {
-        if (Character.IsGrounded && !Character.IsJumping) {
+        if ((Character.IsGrounded && !Character.IsJumping) || Character.IsGrabbingWall != 0) {
             IsComplete = true;
         }
         Character.ApplyAdaptiveGravity();
