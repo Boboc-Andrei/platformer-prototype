@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="8" tileheight="8" infinite="0" nextlayerid="10" nextobjectid="485">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="8" tileheight="8" infinite="0" nextlayerid="11" nextobjectid="505">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <tileset firstgid="49" source="8x8_simple_platform.tsx"/>
  <tileset firstgid="54" source="8x8_placeholder13_full.tsx"/>
  <tileset firstgid="69" source="8x8_simple_platform_upper.tsx"/>
+ <objectgroup id="10" name="LevelTransitions">
+  <object id="497" template="LevelTransition.tx" x="4" y="184">
+   <properties>
+    <property name="FromGateID" value="L1"/>
+    <property name="FromScene" value="Level2"/>
+    <property name="ToGateID" value="R1"/>
+    <property name="ToScene" value="Level1"/>
+   </properties>
+  </object>
+  <object id="498" template="LevelTransition.tx" x="316" y="184">
+   <properties>
+    <property name="FromScene" value="Level2"/>
+    <property name="ToScene" value="Level1"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer id="1" name="Level" width="40" height="30" opacity="0.37">
   <properties>
    <property name="unity:ignore" value="True"/>
@@ -109,30 +125,12 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="8" name="LevelTransitions">
-  <object id="422" template="LevelTransition.tx" name="LevelTransition" type="LevelTransition" x="316" y="184">
-   <properties>
-    <property name="FromGateID" value="R1"/>
-    <property name="FromScene" value="Level2"/>
-    <property name="ToGateID" value="L1"/>
-    <property name="ToScene" value="Level1"/>
-   </properties>
-  </object>
-  <object id="484" template="LevelTransition.tx" x="4" y="184">
-   <properties>
-    <property name="FromGateID" value="L1"/>
-    <property name="FromScene" value="Level2"/>
-    <property name="ToGateID" value="R1"/>
-    <property name="ToScene" value="Level1"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="9" name="Ledges">
-  <object id="474" template="LedgeHitbox.tx" x="137" y="90"/>
-  <object id="475" template="LedgeHitbox.tx" x="159" y="90"/>
-  <object id="476" template="LedgeHitbox.tx" x="111" y="106"/>
-  <object id="477" template="LedgeHitbox.tx" x="103" y="154"/>
-  <object id="478" template="LedgeHitbox.tx" x="73" y="106"/>
-  <object id="479" template="LedgeHitbox.tx" x="57" y="154"/>
+  <object id="499" template="LedgeHitbox.tx" x="137" y="90"/>
+  <object id="500" template="LedgeHitbox.tx" x="159" y="90"/>
+  <object id="501" template="LedgeHitbox.tx" x="111" y="106"/>
+  <object id="502" template="LedgeHitbox.tx" x="103" y="154"/>
+  <object id="503" template="LedgeHitbox.tx" x="73" y="106"/>
+  <object id="504" template="LedgeHitbox.tx" x="57" y="154"/>
  </objectgroup>
 </map>
