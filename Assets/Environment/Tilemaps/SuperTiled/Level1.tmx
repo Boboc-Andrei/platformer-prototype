@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="8" tileheight="8" infinite="0" nextlayerid="24" nextobjectid="3903">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="40" tilewidth="8" tileheight="8" infinite="0" nextlayerid="25" nextobjectid="3985">
  <tileset firstgid="1" source="8x8_grassy_dirt.tsx"/>
  <tileset firstgid="49" name="AutoMap Rules" tilewidth="32" tileheight="32" tilecount="5" columns="5" tilerendersize="grid" fillmode="preserve-aspect-fit">
   <image source="qrc:/automap-tiles.svg" width="160" height="32"/>
@@ -179,14 +179,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="Ledges">
-  <object id="3895" template="LedgeHitbox.tx" x="321" y="106"/>
-  <object id="3896" template="LedgeHitbox.tx" x="65" y="242"/>
-  <object id="3897" template="LedgeHitbox.tx" x="153" y="242"/>
-  <object id="3898" template="LedgeHitbox.tx" x="249" y="242"/>
-  <object id="3899" template="LedgeHitbox.tx" x="279" y="106"/>
-  <object id="3900" template="LedgeHitbox.tx" x="95" y="242"/>
-  <object id="3901" template="LedgeHitbox.tx" x="183" y="242"/>
-  <object id="3902" template="LedgeHitbox.tx" x="279" y="242"/>
+ <objectgroup id="24" name="Ledges">
+  <object id="3977" template="LedgeHitbox.tx" x="321" y="106"/>
+  <object id="3978" template="LedgeHitbox.tx" x="65" y="242"/>
+  <object id="3979" template="LedgeHitbox.tx" x="153" y="242"/>
+  <object id="3980" template="LedgeHitbox.tx" x="249" y="242"/>
+  <object id="3981" template="LedgeHitbox.tx" x="279" y="106"/>
+  <object id="3982" template="LedgeHitbox.tx" x="95" y="242"/>
+  <object id="3983" template="LedgeHitbox.tx" x="183" y="242"/>
+  <object id="3984" template="LedgeHitbox.tx" x="279" y="242"/>
  </objectgroup>
 </map>

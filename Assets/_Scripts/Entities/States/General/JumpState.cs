@@ -22,7 +22,6 @@ internal class JumpState : CharacterState {
     }
 
     public override void Exit() {
-        Debug.Log("exiting jump state");
     }
 
     public override string ToString() {

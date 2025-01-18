@@ -32,5 +32,15 @@ public class TerrainSensor : MonoBehaviour
         TimeSinceTouched += Time.fixedDeltaTime;
         IsTouching = false;
     }
-     
+
+    public bool IsTouchingLayer(string layer) {
+        int layerIndex = LayerMask.NameToLayer(layer);
+
+        if (layerIndex < 0) {
+            Debug.LogWarning($"Layer {layer} does not exist");
+            return false;
+        }
+        int layerMask = 1 << layerIndex;
+        return Physics2D.OverlapAreaAll(collider.bounds.min, collider.bounds.max, layerMask).Length > 0;
+    }
 }

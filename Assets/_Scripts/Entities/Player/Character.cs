@@ -7,6 +7,7 @@ public class Character : MonoBehaviour {
     public Rigidbody2D Body;
     public SpriteRenderer Sprite;
     public Animator Animator;
+    public Collider2D HitBox;
     
     [Header("Sensors")]
     public TerrainSensor GroundCheck;
@@ -31,6 +32,8 @@ public class Character : MonoBehaviour {
     public float TimeSinceGrounded => GroundCheck.TimeSinceTouched;
     public int IsTouchingWall => LeftWallCheck.IsTouching ? -1 : RightWallCheck.IsTouching ? 1 : 0;
     public bool IsJumping { get; set; }
+    public bool IsJumpingDisabled { get; set; } = false;
+    public bool JumpingThroughPlatform { get; set; }
     public bool IsWallJumping { get; set; }
     public int WallJumpDirection { get; set; }
     public float HorizontalDrag { get; set; } = 0;
@@ -110,7 +113,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual bool CanJump() {
-        return IsGrounded || CanCoyoteJump() && !IsJumping && Body.linearVelocityY <= 0;
+        return IsGrounded || CanCoyoteJump() && !IsJumping && Body.linearVelocityY <= 0 && !IsJumpingDisabled;
     }
 
     public virtual bool CanCoyoteJump() {
@@ -126,7 +129,7 @@ public class Character : MonoBehaviour {
     }
 
     public virtual bool CanWallJump() {
-        return IsTouchingWall != 0 && !IsGrounded && !IsJumping && Body.linearVelocityY < .1f;
+        return IsTouchingWall != 0 && !IsGrounded && !IsJumping && Body.linearVelocityY < .1f && !IsJumpingDisabled;
     }
     #endregion
 

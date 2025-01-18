@@ -12,7 +12,6 @@ internal class OnWallState : CharacterState {
     public float GrabTime = 1f;
 
     public override void Enter() {
-        Debug.Log($"entered wall state. playing wall climb animation: {clip.name}");
         Character.Animator.Play(clip.name);
         Character.ApplyNormalGravityRules = false;
         Character.Body.gravityScale = 0;

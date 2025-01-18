@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level2.tmx",
+    "activeFile": "Level1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -39,8 +39,8 @@
             "scale": 4,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 115.375,
-                "y": 66.375
+                "x": 120,
+                "y": 79.875
             }
         },
         "AutomapRules.tmx#AutoMap Rules": {
@@ -51,11 +51,11 @@
             "expandedObjectLayers": [
                 22
             ],
-            "scale": 2,
-            "selectedLayer": 3,
+            "scale": 5.5,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 532.75,
-                "y": 166.75
+                "x": 230.72727272727275,
+                "y": 140.36363636363637
             }
         },
         "Level1.tmx#AutoMap Rules": {
@@ -66,18 +66,18 @@
                 10
             ],
             "scale": 2,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 107.75,
-                "y": 233.25
+                "x": -322.5,
+                "y": 251.5
             }
         },
         "Level3.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -94.75,
-                "y": 339.25
+                "x": 240,
+                "y": 119.75
             }
         },
         "Level4.tmx": {
@@ -85,7 +85,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 160,
-                "y": 239.33333333333331
+                "y": 239.3333333333333
             }
         },
         "automap-tiles.tmx": {
@@ -126,10 +126,10 @@
     "property.type": "bool",
     "recentFiles": [
         "AutomapRules.tmx",
-        "Level1.tmx",
         "Level4.tmx",
         "Level3.tmx",
         "Level2.tmx",
+        "Level1.tmx",
         "8x8_placeholder13_full.tsx",
         "8x8_simple_platform_upper.tsx",
         "8x8_simple_platform.tsx",

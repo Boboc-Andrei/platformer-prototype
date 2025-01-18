@@ -28,8 +28,9 @@ public class PlayerMovement : Character {
         OnWallState.SetBlackBoard(this);
 
         StateMachine.Set(GroundedState);
-    }
 
+        ApplyFallingGravity();
+    }
     private void Update() {
         if (ApplyWalkingSpeedLimit) {
             LimitWalkingSpeed();
@@ -39,8 +40,6 @@ public class PlayerMovement : Character {
 
         StateMachine.CurrentState.OnUpdate();
     }
-
-
     private void FixedUpdate() {
         if (!DisableHorizontalMovement) {
             MoveWithInput();
@@ -55,7 +54,6 @@ public class PlayerMovement : Character {
 
         StateMachine.CurrentState.OnFixedUpdate();
     }
-
     private void SelectState() {
 
         if (StateMachine.CurrentState.IsComplete) {
@@ -77,12 +75,37 @@ public class PlayerMovement : Character {
         ApplyAccelerationX(Input.HorizontalMovement * MovementParams.HorizontalAcceleration);
     }
 
+
     private void JumpWithInput() {
-        if (Input.Jump && CanJump()) {
-            Jump();
+        if (Input.Jump && !JumpingThroughPlatform) {
+            if (Input.VerticalMovement < 0 && GroundCheck.IsTouchingLayer("Platforms") && Body.linearVelocityY == 0) {
+                JumpDownFromPlatform();
+            }
+            else if (CanJump()) {
+                Jump();
+            }
+            else if (CanWallJump()) {
+                WallJump();
+            }
         }
-        else if (Input.Jump && CanWallJump()) {
-            WallJump();
-        }
+    }
+
+    private void JumpDownFromPlatform() {
+        ApplyVelocityY(4f);
+        StartCoroutine(DisableCollisionForSeconds(.25f));
+        StartCoroutine(DisableJumpingForSeconds(.35f));
+    }
+    private IEnumerator DisableCollisionForSeconds(float time) {
+        HitBox.enabled = false;
+        yield return new WaitForSeconds(time);
+        HitBox.enabled = true;
+    }
+
+    private IEnumerator DisableJumpingForSeconds(float time) {
+        IsJumpingDisabled = true;
+        JumpingThroughPlatform = true;
+        yield return new WaitForSeconds(time);
+        IsJumpingDisabled = false;
+        JumpingThroughPlatform = false;
     }
 }
